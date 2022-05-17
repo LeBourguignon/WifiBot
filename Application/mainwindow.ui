@@ -122,7 +122,7 @@
      <string>PushButton</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="droite">
     <property name="geometry">
      <rect>
       <x>560</x>
@@ -132,7 +132,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>-&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_5">
@@ -157,7 +157,7 @@
    <zorder>pushButton</zorder>
    <zorder>pushButton_2</zorder>
    <zorder>pushButton_3</zorder>
-   <zorder>pushButton_4</zorder>
+   <zorder>droite</zorder>
    <zorder>pushButton_5</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">

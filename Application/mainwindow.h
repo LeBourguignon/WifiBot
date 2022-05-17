@@ -19,6 +19,10 @@ private slots:
 
     void on_radioButton_clicked(bool checked);
 
+    void on_pushButton_3_pressed();
+
+    void on_droite_pressed();
+
 private:
     Ui::MainWindow *ui;
 };
