@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->radioButton->setText("");
+
 }
 
 MainWindow::~MainWindow()
@@ -16,9 +18,9 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_b_connexion_clicked()
+void MainWindow::on_radioButton_clicked(bool checked)
 {
-    qDebug()<<"ffff";
-    ui->b_connexion->setText("Clicked");
+   //avec ce bouton on paramètre le fait d'aller tout droit
+   //c'est à dire on fait en sorte que la vitesse de la roue droite soit la même que la roue gauche
 }
 

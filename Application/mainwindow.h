@@ -16,7 +16,8 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_b_connexion_clicked();
+
+    void on_radioButton_clicked(bool checked);
 
 private:
     Ui::MainWindow *ui;
