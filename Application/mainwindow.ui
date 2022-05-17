@@ -17,10 +17,10 @@
    <widget class="QPushButton" name="b_connexion">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>134</x>
       <y>170</y>
-      <width>75</width>
-      <height>24</height>
+      <width>151</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="text">
