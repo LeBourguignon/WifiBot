@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    myRobot.disConnect();
     delete ui;
 }
 
@@ -90,3 +91,7 @@ void MainWindow::on_Vitesse_Roue_overflow()
 
 }
 
+//void MainWindow::on_Vitesse_Roue_overflow()
+//{
+
+//}
