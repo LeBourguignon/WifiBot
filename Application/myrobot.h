@@ -14,7 +14,7 @@ class MyRobot : public QObject {
     Q_OBJECT
 public:
     explicit MyRobot(QObject *parent = 0);
-    void doConnect();
+    bool doConnect();
     void disConnect();
 
     QByteArray DataToSend;
@@ -22,7 +22,7 @@ public:
 
     QMutex Mutex;
 
-    bool isConnect;
+    bool const isConnect();
 
 signals:
     void updateUI(const QByteArray Data);
@@ -41,6 +41,8 @@ private:
     QTimer *TimerEnvoi;
 
     quint16 crc16(QByteArray adresseTab, unsigned int tailleMax);
+
+    bool _isConnect = false;
 };
 
 #endif // MYROBOT_H

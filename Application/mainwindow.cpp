@@ -13,7 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    myRobot.disConnect();
+    if (myRobot.isConnect())
+        myRobot.disConnect();
     delete ui;
 }
 
@@ -21,9 +22,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_Connexion_clicked()
 {
-
-    ui->Connexion->setText("Deconnexion");
-
+    if (myRobot.isConnect()) {
+        myRobot.disConnect();
+        ui->Connexion->setText("Déconnecté");
+    }
+    else {
+        if (myRobot.doConnect())
+            ui->Connexion->setText("Connecté");
+    }
 }
 
 

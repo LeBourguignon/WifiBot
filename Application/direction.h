@@ -5,7 +5,8 @@ enum class Direction {
     FORWARD,
     LEFT,
     RIGHT,
-    BACKWARD
+    BACKWARD,
+    NONE
 };
 
 #endif // DIRECTION_H
