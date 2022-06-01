@@ -8,9 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-
-
+    setStyleSheet("background-color: rgb(200,200,200)");
 }
 
 MainWindow::~MainWindow()
@@ -24,6 +22,7 @@ void MainWindow::on_Connexion_clicked()
 {
 
     ui->Connexion->setText("Deconnexion");
+
 }
 
 
@@ -81,14 +80,14 @@ void MainWindow::on_Niv_Batterie_overflow()
 }
 
 
-void MainWindow::on_Distance_Infra_overflow()
-{
+//void MainWindow::on_Distance_Infra_overflow()
+//{
 
-}
+//}
 
 
-void MainWindow::on_Vitesse_Roue_overflow()
-{
+//void MainWindow::on_Vitesse_Roue_overflow()
+//{
 
-}
+//}
 
