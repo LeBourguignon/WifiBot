@@ -8,8 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->radioButton->setText("");
-    ui->pushButton_3->setText("<-");
+
+
 
 }
 
@@ -19,20 +19,75 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_radioButton_clicked(bool checked)
+
+void MainWindow::on_Connexion_clicked()
 {
-   //avec ce bouton on paramètre le fait d'aller tout droit
-   //c'est à dire on fait en sorte que la vitesse de la roue droite soit la même que la roue gauche
+
+    ui->Connexion->setText("Deconnexion");
 }
 
 
-void MainWindow::on_pushButton_3_pressed()
+void MainWindow::on_Reculer_clicked()
 {
-    //pour tourner la camera à gauche
+
 }
 
 
-void MainWindow::on_droite_pressed()
+void MainWindow::on_Gauche_clicked()
+{
+
+}
+
+
+void MainWindow::on_Avancer_clicked()
+{
+
+}
+
+
+void MainWindow::on_Droite_clicked()
+{
+
+}
+
+
+void MainWindow::on_Camera_Haut_clicked()
+{
+
+}
+
+
+void MainWindow::on_Camera_Droite_clicked()
+{
+
+}
+
+
+void MainWindow::on_Camera_Bas_clicked()
+{
+
+}
+
+
+void MainWindow::on_Camera_Gauche_clicked()
+{
+
+}
+
+
+void MainWindow::on_Niv_Batterie_overflow()
+{
+
+}
+
+
+void MainWindow::on_Distance_Infra_overflow()
+{
+
+}
+
+
+void MainWindow::on_Vitesse_Roue_overflow()
 {
 
 }

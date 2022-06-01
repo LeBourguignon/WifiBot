@@ -17,11 +17,25 @@ public:
 
 private slots:
 
-    void on_radioButton_clicked(bool checked);
+    void on_Connexion_clicked();
 
-    void on_pushButton_3_pressed();
+    void on_Reculer_clicked();
 
-    void on_droite_pressed();
+    void on_Gauche_clicked();
+
+    void on_Avancer_clicked();
+
+    void on_Droite_clicked();
+
+    void on_Camera_Haut_clicked();
+
+    void on_Camera_Droite_clicked();
+
+    void on_Camera_Bas_clicked();
+
+    void on_Camera_Gauche_clicked();
+
+    void on_Niv_Batterie_overflow();
 
 private:
     Ui::MainWindow *ui;
