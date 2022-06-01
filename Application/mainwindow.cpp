@@ -80,14 +80,13 @@ void MainWindow::on_Niv_Batterie_overflow()
 }
 
 
-//void MainWindow::on_Distance_Infra_overflow()
-//{
+void MainWindow::on_Distance_Infra_overflow()
+{
 
-//}
+}
 
+void MainWindow::on_Vitesse_Roue_overflow()
+{
 
-//void MainWindow::on_Vitesse_Roue_overflow()
-//{
-
-//}
+}
 

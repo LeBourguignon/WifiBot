@@ -37,6 +37,11 @@ private slots:
 
     void on_Niv_Batterie_overflow();
 
+    void on_Vitesse_Roue_overflow();
+
+    void on_Distance_Infra_overflow();
+
+
 private:
     Ui::MainWindow *ui;
 };
