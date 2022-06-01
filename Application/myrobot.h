@@ -8,6 +8,7 @@
 #include <QTimer>
 #include <QMutex>
 
+
 class MyRobot : public QObject {
     Q_OBJECT
 public:

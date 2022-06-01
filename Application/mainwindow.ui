@@ -17,8 +17,8 @@
    <widget class="QLCDNumber" name="Vitesse_Roue">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>130</y>
+      <x>390</x>
+      <y>90</y>
       <width>64</width>
       <height>23</height>
      </rect>
@@ -28,19 +28,9 @@
     <property name="geometry">
      <rect>
       <x>500</x>
-      <y>170</y>
+      <y>120</y>
       <width>51</width>
       <height>20</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="graphicsView">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>160</y>
-      <width>251</width>
-      <height>181</height>
      </rect>
     </property>
    </widget>
@@ -48,7 +38,7 @@
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>360</y>
+      <y>410</y>
       <width>100</width>
       <height>32</height>
      </rect>
@@ -161,18 +151,16 @@
      <string>Reculer</string>
     </property>
    </widget>
-   <zorder>graphicsView</zorder>
-   <zorder>Vitesse_Roue</zorder>
-   <zorder>Niv_Batterie</zorder>
-   <zorder>Connexion</zorder>
-   <zorder>Camera_Haut</zorder>
-   <zorder>Camera_Gauche</zorder>
-   <zorder>Camera_Droite</zorder>
-   <zorder>Camera_Bas</zorder>
-   <zorder>Gauche</zorder>
-   <zorder>Avancer</zorder>
-   <zorder>Droite</zorder>
-   <zorder>Reculer</zorder>
+   <widget class="QWebEngineView" name="Camera" native="true">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>150</y>
+      <width>351</width>
+      <height>251</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -186,6 +174,14 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header location="global">qwebengineview</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

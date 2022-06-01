@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    webcam();
 
 
 
@@ -81,14 +82,9 @@ void MainWindow::on_Niv_Batterie_overflow()
 }
 
 
-void MainWindow::on_Distance_Infra_overflow()
-{
-
-}
-
-
-void MainWindow::on_Vitesse_Roue_overflow()
-{
-
+void MainWindow::webcam(){
+    QWebEngineView *view = this->findChild<QWebEngineView*>("Camera");
+    view->load(QUrl("http://192.168.1.106:8080/?action=stream"));
+    view->show();
 }
 
