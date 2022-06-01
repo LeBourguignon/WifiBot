@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    myRobot.disConnect();
     delete ui;
 }
 
@@ -90,4 +91,3 @@ void MainWindow::on_Niv_Batterie_overflow()
 //{
 
 //}
-

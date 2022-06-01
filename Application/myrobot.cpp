@@ -6,13 +6,18 @@ MyRobot::MyRobot(QObject *parent) : QObject(parent) {
     DataToSend.resize(9);
     DataToSend[0] = 0xFF;
     DataToSend[1] = 0x07;
+
     DataToSend[2] = 0x0;
     DataToSend[3] = 0x0;
     DataToSend[4] = 0x0;
     DataToSend[5] = 0x0;
     DataToSend[6] = 0x0;
-    DataToSend[7] = 0x0;
-    DataToSend[8] = 0x0;
+
+    quint16 crc = crc16(DataToSend, 7);
+
+    DataToSend[7] = crc;
+    DataToSend[8] = (crc >> 8);
+
     DataReceived.resize(21);
     TimerEnvoi = new QTimer();
     // setup signal and slot
@@ -34,6 +39,7 @@ void MyRobot::doConnect() {
         qDebug() << "Error: " << socket->errorString();
         return;
     }
+    isConnect = true;
     TimerEnvoi->start(75);
 
 }
@@ -59,7 +65,6 @@ void MyRobot::readyRead() {
     qDebug() << "reading..."; // read the data from the socket
     DataReceived = socket->readAll();
     emit updateUI(DataReceived);
-    qDebug() << DataReceived[0] << DataReceived[1] << DataReceived[2];
 }
 
 void MyRobot::MyTimerSlot() {
@@ -67,4 +72,56 @@ void MyRobot::MyTimerSlot() {
     while(Mutex.tryLock());
     socket->write(DataToSend);
     Mutex.unlock();
+}
+
+// Mise à jours des octets pour le déplacement du robot (Update Direction + Vitesse)
+void MyRobot::move(Direction direction, quint8 velocity)
+{
+    while(Mutex.tryLock());
+    this->DataToSend[2] = velocity;
+    this->DataToSend[4] = velocity;
+    switch(direction){
+    case Direction::FORWARD:
+        this->DataToSend[6] = 0b01010000; // Avant
+        break;
+    case Direction::LEFT:
+        this->DataToSend[6] = 0b00010000; // G
+        break;
+    case Direction::RIGHT:
+        this->DataToSend[6] = 0b01000000; // D
+        break;
+    case Direction::BACKWARD:
+        this->DataToSend[6] = 0b00000000; // Arr
+        break;
+    default:
+        this->DataToSend[2] = 0; // Vitesse  à 0
+        this->DataToSend[4] = 0; // Vitesse  à 0
+        this->DataToSend[6] = 0b01010000; // Avant
+        break;
+    }
+
+    quint16 crc = crc16(DataToSend, 7);
+
+    DataToSend[7] = crc;
+    DataToSend[8] = (crc >> 8);
+
+    Mutex.unlock();
+}
+
+quint16 MyRobot::crc16(QByteArray adresseTab, unsigned int tailleMax) {
+    quint16 crc = 0xFFFF;
+    quint16 polynome = 0xA001;
+    quint16 parity =0;
+    unsigned int cptBit = 0;
+
+    for(auto it = adresseTab.begin()+1; it != adresseTab.begin()+tailleMax; ++it) {
+        crc ^= *it;
+        for(cptBit = 0; cptBit <= 7; ++cptBit) {
+            parity = crc;
+            crc >>= 1;
+            if(parity%2 == true)
+                crc ^= polynome;
+        }
+    }
+    return crc;
 }
