@@ -12,13 +12,13 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    myRobot.disConnect();
     delete ui;
 }
 
 
 void MainWindow::on_b_connexion_clicked()
 {
-    qDebug()<<"ffff";
-    ui->b_connexion->setText("Clicked");
+    myRobot.doConnect();
+    myRobot.move();
 }
-
