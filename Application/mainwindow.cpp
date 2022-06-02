@@ -8,10 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    webcam();
-
-
-
+    camera = new Camera(this);
 }
 
 MainWindow::~MainWindow()
@@ -54,25 +51,25 @@ void MainWindow::on_Droite_clicked()
 
 void MainWindow::on_Camera_Haut_clicked()
 {
-
+    camera->move(0);
 }
 
 
 void MainWindow::on_Camera_Droite_clicked()
 {
-
+    camera->move(2);
 }
 
 
 void MainWindow::on_Camera_Bas_clicked()
 {
-
+    camera->move(3);
 }
 
 
 void MainWindow::on_Camera_Gauche_clicked()
 {
-
+    camera->move(1);
 }
 
 
@@ -80,11 +77,3 @@ void MainWindow::on_Niv_Batterie_overflow()
 {
 
 }
-
-
-void MainWindow::webcam(){
-    QWebEngineView *view = this->findChild<QWebEngineView*>("Camera");
-    view->load(QUrl("http://192.168.1.106:8080/?action=stream"));
-    view->show();
-}
-
