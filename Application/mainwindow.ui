@@ -47,16 +47,6 @@
      </font>
     </property>
    </widget>
-   <widget class="QGraphicsView" name="graphicsView">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>40</y>
-      <width>451</width>
-      <height>321</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="Connexion">
     <property name="geometry">
      <rect>
@@ -236,13 +226,25 @@
    <widget class="QWebEngineView" name="Camera" native="true">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>150</y>
-      <width>351</width>
-      <height>251</height>
+      <x>210</x>
+      <y>40</y>
+      <width>451</width>
+      <height>321</height>
      </rect>
     </property>
    </widget>
+   <zorder>Connexion</zorder>
+   <zorder>Camera_Haut</zorder>
+   <zorder>Camera_Gauche</zorder>
+   <zorder>Camera_Droite</zorder>
+   <zorder>Camera_Bas</zorder>
+   <zorder>Gauche</zorder>
+   <zorder>Avancer</zorder>
+   <zorder>Droite</zorder>
+   <zorder>Reculer</zorder>
+   <zorder>Camera</zorder>
+   <zorder>Niv_Batterie</zorder>
+   <zorder>Vitesse_Roue</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -250,7 +252,7 @@
      <x>0</x>
      <y>0</y>
      <width>896</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
