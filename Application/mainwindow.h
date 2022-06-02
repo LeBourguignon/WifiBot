@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+
 #include "camera.h"
+#include "myrobot.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,14 +22,22 @@ private slots:
 
     void on_Connexion_clicked();
 
-    void on_Reculer_clicked();
+    void on_Avancer_pressed();
 
-    void on_Gauche_clicked();
+    void on_Avancer_released();
 
-    void on_Avancer_clicked();
+    void on_Gauche_pressed();
 
-    void on_Droite_clicked();
+    void on_Gauche_released();
 
+    void on_Droite_pressed();
+
+    void on_Droite_released();
+
+    void on_Reculer_pressed();
+
+    void on_Reculer_released();
+    
     void on_Camera_Haut_clicked();
 
     void on_Camera_Droite_clicked();
@@ -36,10 +46,9 @@ private slots:
 
     void on_Camera_Gauche_clicked();
 
-    void on_Niv_Batterie_overflow();
-
 private:
     Ui::MainWindow *ui;
     Camera *camera;
+    MyRobot myRobot;
 };
 #endif // MAINWINDOW_H
