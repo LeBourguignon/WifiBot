@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+
+#include "camera.h"
 #include "myrobot.h"
 
 QT_BEGIN_NAMESPACE
@@ -35,9 +37,18 @@ private slots:
     void on_Reculer_pressed();
 
     void on_Reculer_released();
+    
+    void on_Camera_Haut_clicked();
+
+    void on_Camera_Droite_clicked();
+
+    void on_Camera_Bas_clicked();
+
+    void on_Camera_Gauche_clicked();
 
 private:
     Ui::MainWindow *ui;
+    Camera *camera;
     MyRobot myRobot;
 };
 #endif // MAINWINDOW_H

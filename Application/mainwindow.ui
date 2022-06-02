@@ -233,18 +233,16 @@
      <string>Reculer</string>
     </property>
    </widget>
-   <zorder>graphicsView</zorder>
-   <zorder>Vitesse_Roue</zorder>
-   <zorder>Niv_Batterie</zorder>
-   <zorder>Connexion</zorder>
-   <zorder>Camera_Haut</zorder>
-   <zorder>Camera_Gauche</zorder>
-   <zorder>Camera_Droite</zorder>
-   <zorder>Camera_Bas</zorder>
-   <zorder>Gauche</zorder>
-   <zorder>Avancer</zorder>
-   <zorder>Droite</zorder>
-   <zorder>Reculer</zorder>
+   <widget class="QWebEngineView" name="Camera" native="true">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>150</y>
+      <width>351</width>
+      <height>251</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -258,6 +256,14 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header location="global">qwebengineview</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

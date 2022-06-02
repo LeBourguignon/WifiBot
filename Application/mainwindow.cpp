@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    camera = new Camera(this);
     setStyleSheet("background-color: rgb(200,200,200)");
 }
 
@@ -73,4 +74,28 @@ void MainWindow::on_Reculer_pressed()
 void MainWindow::on_Reculer_released()
 {
     myRobot.move();
+}
+
+
+void MainWindow::on_Camera_Haut_clicked()
+{
+    camera->move(0);
+}
+
+
+void MainWindow::on_Camera_Droite_clicked()
+{
+    camera->move(2);
+}
+
+
+void MainWindow::on_Camera_Bas_clicked()
+{
+    camera->move(3);
+}
+
+
+void MainWindow::on_Camera_Gauche_clicked()
+{
+    camera->move(1);
 }
