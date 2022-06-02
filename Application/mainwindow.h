@@ -20,23 +20,21 @@ private slots:
 
     void on_Connexion_clicked();
 
-    void on_Reculer_clicked();
+    void on_Avancer_pressed();
 
-    void on_Gauche_clicked();
+    void on_Avancer_released();
 
-    void on_Avancer_clicked();
+    void on_Gauche_pressed();
 
-    void on_Droite_clicked();
+    void on_Gauche_released();
 
-    void on_Camera_Haut_clicked();
+    void on_Droite_pressed();
 
-    void on_Camera_Droite_clicked();
+    void on_Droite_released();
 
-    void on_Camera_Bas_clicked();
+    void on_Reculer_pressed();
 
-    void on_Camera_Gauche_clicked();
-
-    void on_Niv_Batterie_overflow();
+    void on_Reculer_released();
 
 private:
     Ui::MainWindow *ui;

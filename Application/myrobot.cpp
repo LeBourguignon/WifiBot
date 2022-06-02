@@ -7,11 +7,11 @@ MyRobot::MyRobot(QObject *parent) : QObject(parent) {
     DataToSend[0] = 0xFF;
     DataToSend[1] = 0x07;
 
-    DataToSend[2] = 0x0;
-    DataToSend[3] = 0x0;
-    DataToSend[4] = 0x0;
-    DataToSend[5] = 0x0;
-    DataToSend[6] = 0x0;
+    DataToSend[2] = 0x00;
+    DataToSend[3] = 0x00;
+    DataToSend[4] = 0x00;
+    DataToSend[5] = 0x00;
+    DataToSend[6] = 0x00;
 
     quint16 crc = crc16(DataToSend, 7);
 
@@ -85,21 +85,21 @@ void MyRobot::move(Direction direction, quint8 velocity)
     this->DataToSend[4] = velocity;
     switch(direction){
     case Direction::FORWARD:
-        this->DataToSend[6] = 0b01010000; // Avant
+        this->DataToSend[6] = 0b01010000;
         break;
     case Direction::LEFT:
-        this->DataToSend[6] = 0b00010000; // G
+        this->DataToSend[6] = 0b00010000;
         break;
     case Direction::RIGHT:
-        this->DataToSend[6] = 0b01000000; // D
+        this->DataToSend[6] = 0b01000000;
         break;
     case Direction::BACKWARD:
-        this->DataToSend[6] = 0b00000000; // Arr
+        this->DataToSend[6] = 0b00000000;
         break;
     default:
-        this->DataToSend[2] = 0; // Vitesse  à 0
-        this->DataToSend[4] = 0; // Vitesse  à 0
-        this->DataToSend[6] = 0b01010000; // Avant
+        this->DataToSend[2] = 0;
+        this->DataToSend[4] = 0;
+        this->DataToSend[6] = 0b01010000;
         break;
     }
 

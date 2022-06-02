@@ -19,7 +19,6 @@ MainWindow::~MainWindow()
 }
 
 
-
 void MainWindow::on_Connexion_clicked()
 {
     if (myRobot.isConnect()) {
@@ -33,67 +32,45 @@ void MainWindow::on_Connexion_clicked()
 }
 
 
-void MainWindow::on_Reculer_clicked()
+void MainWindow::on_Avancer_pressed()
 {
+    myRobot.move(Direction::FORWARD, 0x7F);
+}
 
+void MainWindow::on_Avancer_released()
+{
+    myRobot.move();
 }
 
 
-void MainWindow::on_Gauche_clicked()
+void MainWindow::on_Gauche_pressed()
 {
+    myRobot.move(Direction::LEFT, 0x7F);
+}
 
+void MainWindow::on_Gauche_released()
+{
+    myRobot.move();
 }
 
 
-void MainWindow::on_Avancer_clicked()
+void MainWindow::on_Droite_pressed()
 {
+    myRobot.move(Direction::RIGHT, 0x7F);
+}
 
+void MainWindow::on_Droite_released()
+{
+    myRobot.move();
 }
 
 
-void MainWindow::on_Droite_clicked()
+void MainWindow::on_Reculer_pressed()
 {
-
+    myRobot.move(Direction::BACKWARD, 0x7F);
 }
 
-
-void MainWindow::on_Camera_Haut_clicked()
+void MainWindow::on_Reculer_released()
 {
-
+    myRobot.move();
 }
-
-
-void MainWindow::on_Camera_Droite_clicked()
-{
-
-}
-
-
-void MainWindow::on_Camera_Bas_clicked()
-{
-
-}
-
-
-void MainWindow::on_Camera_Gauche_clicked()
-{
-
-}
-
-
-void MainWindow::on_Niv_Batterie_overflow()
-{
-
-}
-
-
-//void MainWindow::on_Distance_Infra_overflow()
-//{
-
-//}
-
-
-//void MainWindow::on_Vitesse_Roue_overflow()
-//{
-
-//}
