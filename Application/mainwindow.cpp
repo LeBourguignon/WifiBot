@@ -81,6 +81,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     int touche = event->key();
     switch(touche){
 
+            case Qt::Key_Z:
+            myRobot.move(Direction::FORWARD, 0x7F);
+            break;
+
             case Qt::Key_Q:
             myRobot.move(Direction::LEFT, 0x7F);
             break;
@@ -93,8 +97,20 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
             myRobot.move(Direction::BACKWARD, 0x7F);
             break;
 
+
+     }
+
+}
+
+void MainWindow::keyReleaseEvent(QKeyEvent *event){
+    int touche = event->key();
+    switch(touche){
+
             case Qt::Key_Z:
-            myRobot.move(Direction::FORWARD, 0x7F);
+            case Qt::Key_Q:
+            case Qt::Key_D:
+            case Qt::Key_S:
+            myRobot.move();
             break;
 
      }
@@ -106,6 +122,10 @@ void MainWindow::on_Camera_Haut_clicked()
     camera->move(0);
 }
 
+void MainWindow::on_Camera_Gauche_clicked()
+{
+    camera->move(1);
+}
 
 void MainWindow::on_Camera_Droite_clicked()
 {
@@ -119,7 +139,4 @@ void MainWindow::on_Camera_Bas_clicked()
 }
 
 
-void MainWindow::on_Camera_Gauche_clicked()
-{
-    camera->move(1);
-}
+

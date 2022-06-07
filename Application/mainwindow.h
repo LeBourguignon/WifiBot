@@ -50,6 +50,7 @@ private slots:
 
 protected:
     void MainWindow::keyPressEvent(QKeyEvent *event);
+    void MainWindow::keyReleaseEvent(QKeyEvent *event);
 
 private:
     Ui::MainWindow *ui;
