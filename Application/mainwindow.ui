@@ -31,6 +31,9 @@
       <family>Courier New</family>
      </font>
     </property>
+    <property name="intValue" stdset="0">
+     <number>0</number>
+    </property>
    </widget>
    <widget class="QLCDNumber" name="Niv_Batterie">
     <property name="geometry">
