@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QKeyEvent>
+
 
 #include "camera.h"
 #include "myrobot.h"
@@ -45,6 +47,9 @@ private slots:
     void on_Camera_Bas_clicked();
 
     void on_Camera_Gauche_clicked();
+
+protected:
+    void MainWindow::keyPressEvent(QKeyEvent *event);
 
 private:
     Ui::MainWindow *ui;

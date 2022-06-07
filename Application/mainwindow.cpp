@@ -3,6 +3,7 @@
 #include <QDebug>
 
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -76,6 +77,29 @@ void MainWindow::on_Reculer_released()
     myRobot.move();
 }
 
+void MainWindow::keyPressEvent(QKeyEvent *event){
+    int touche = event->key();
+    switch(touche){
+
+            case Qt::Key_Q:
+            myRobot.move(Direction::LEFT, 0x7F);
+            break;
+
+            case Qt::Key_D:
+            myRobot.move(Direction::RIGHT, 0x7F);
+            break;
+
+            case Qt::Key_S:
+            myRobot.move(Direction::BACKWARD, 0x7F);
+            break;
+
+            case Qt::Key_Z:
+            myRobot.move(Direction::FORWARD, 0x7F);
+            break;
+
+     }
+
+}
 
 void MainWindow::on_Camera_Haut_clicked()
 {
