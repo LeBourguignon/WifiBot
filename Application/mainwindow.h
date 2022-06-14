@@ -53,6 +53,7 @@ private:
     MyRobot myRobot;
     void updateBattery(QByteArray data);
     void updateSpeed(QByteArray data);
+    void updateCaptor(QByteArray data);
 
     long odometryLBefore = 0;
     long odometryRBefore = 0;

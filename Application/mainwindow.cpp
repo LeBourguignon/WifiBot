@@ -24,12 +24,12 @@ MainWindow::~MainWindow()
 void MainWindow::updateWindow(QByteArray data) {
     updateBattery(data);
     updateSpeed(data);
+    updateCaptor(data);
 
-    unsigned char irLF = (unsigned char)data[3];
-    unsigned char irLB = (unsigned char)data[4];
-
-    unsigned char irRF = (unsigned char)data[11];
-    unsigned char irRB = (unsigned char)data[12];
+    if (myRobot.isConnect())
+        ui->Connexion->setText("Connecté");
+    else
+        ui->Connexion->setText("Déconnecté");
 }
 
 void MainWindow::updateBattery(QByteArray data) {
@@ -66,19 +66,63 @@ void MainWindow::updateSpeed(QByteArray data) {
         odometryRBefore = odometryR;
     }
 
-    double speed = (speedL + speedR) / 2;
-    ui->Vitesse_Roue->display((int)speed);
+    double speed = (speedL + speedR) / 20000;
+
+
+    if (speed > 1000000)
+        speed = 0;
+
+    ui->Vitesse_Roue->display(speed);
+    //qDebug() << "Speed: " << speed;
+}
+
+void MainWindow::updateCaptor(QByteArray data) {
+    unsigned char irRF = (unsigned char)data[3];
+    unsigned char irRB = (unsigned char)data[4];
+
+    unsigned char irLF = (unsigned char)data[11];
+    unsigned char irLB = (unsigned char)data[12];
+
+    //qDebug() << "Captor: " << irLF << "; " << irRF << "; " << irLB << "; " << irRB;
+
+    if (irLF >= 180) {
+
+    }
+    else {
+
+    }
+
+    if (irRF >= 180) {
+
+    }
+    else {
+
+    }
+
+    if (irRB >= 180) {
+
+    }
+    else {
+
+    }
+
+    /* Capteur de marche pas
+    if (irLB >= 180) {
+
+    }
+    else {
+
+    }
+    */
 }
 
 void MainWindow::on_Connexion_clicked()
 {
     if (myRobot.isConnect()) {
         myRobot.disConnect();
-        ui->Connexion->setText("Déconnecté");
     }
     else {
-        if (myRobot.doConnect())
-            ui->Connexion->setText("Connecté");
+        myRobot.doConnect();
     }
 }
 
