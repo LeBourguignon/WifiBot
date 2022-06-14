@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
+#include <QGamepad>
 
 
 
@@ -11,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     camera = new Camera(this);
     setStyleSheet("background-color: rgb(200,200,200)");
+    GamepadButton();
+    GamepadLeftAxis();
 }
 
 MainWindow::~MainWindow()
@@ -132,6 +135,7 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event){
 
 }
 
+
 void MainWindow::on_Camera_Haut_clicked()
 {
     camera->move(0);
@@ -154,4 +158,39 @@ void MainWindow::on_Camera_Bas_clicked()
 }
 
 
+void MainWindow::GamepadButton(){
+    connect(QGamepadManager::instance(), &QGamepadManager::gamepadButtonPressEvent, this,
+            [this](int deviceId, QGamepadManager::GamepadButton button, double value){
+        switch(button){
+            case QGamepadManager::GamepadButton::ButtonY:
+            camera->move(0);
+            break;
+            case QGamepadManager::GamepadButton::ButtonX:
+            camera->move(1);
+            break;
+            case QGamepadManager::GamepadButton::ButtonB:
+            camera->move(2);
+            break;
+            case QGamepadManager::GamepadButton::ButtonA:
+            camera->move(3);
+            break;
+            default:
+            break;
+        }
+    });
+}
 
+void MainWindow::GamepadLeftAxis(){
+    connect(QGamepadManager::instance(), &QGamepadManager::gamepadAxisEvent, this,
+            [this](int deviceId, QGamepadManager::GamepadAxis button, double value){
+       //qDebug() << value;
+       qDebug() << button;
+        switch(button){
+            case QGamepadManager::GamepadAxis::AxisLeftX:
+            camera->move(2);
+            break;
+            default:
+            break;
+        }
+    });
+}

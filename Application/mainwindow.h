@@ -20,6 +20,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private slots:
 
     void on_Connexion_clicked();
@@ -51,10 +52,14 @@ private slots:
 protected:
     void MainWindow::keyPressEvent(QKeyEvent *event);
     void MainWindow::keyReleaseEvent(QKeyEvent *event);
+    void MainWindow::GamepadButton();
+    void MainWindow::GamepadLeftAxis();
 
 private:
     Ui::MainWindow *ui;
     Camera *camera;
     MyRobot myRobot;
+
+
 };
 #endif // MAINWINDOW_H
