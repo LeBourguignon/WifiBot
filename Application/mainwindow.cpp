@@ -97,6 +97,21 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
             myRobot.move(Direction::BACKWARD, 0x7F);
             break;
 
+            case Qt::Key_I:
+            camera->move(0);
+            break;
+
+            case Qt::Key_J:
+            camera->move(1);
+            break;
+
+            case Qt::Key_L:
+            camera->move(2);
+            break;
+
+            case Qt::Key_K:
+            camera->move(3);
+            break;
 
      }
 
