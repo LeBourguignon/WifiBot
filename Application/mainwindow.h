@@ -19,6 +19,7 @@ public:
     ~MainWindow();
 
 private slots:
+    void updateWindow(QByteArray data);
 
     void on_Connexion_clicked();
 
@@ -50,5 +51,11 @@ private:
     Ui::MainWindow *ui;
     Camera *camera;
     MyRobot myRobot;
+    void updateBattery(QByteArray data);
+    void updateSpeed(QByteArray data);
+    void updateCaptor(QByteArray data);
+
+    long odometryLBefore = 0;
+    long odometryRBefore = 0;
 };
 #endif // MAINWINDOW_H
