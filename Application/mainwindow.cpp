@@ -8,8 +8,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    camera = new Camera(this);
-    setStyleSheet("background-color: rgb(200,200,200)");
 }
 
 MainWindow::~MainWindow()
