@@ -39,13 +39,11 @@ bool MyRobot::doConnect() {
         qDebug() << "Error: " << socket->errorString();
         return false;
     }
-    _isConnect = true;
     TimerEnvoi->start(75);
     return true;
 }
 
 void MyRobot::disConnect() {
-    _isConnect = false;
     TimerEnvoi->stop();
     socket->close();
 }
@@ -53,25 +51,28 @@ void MyRobot::disConnect() {
 bool const MyRobot::isConnect() { return _isConnect; }
 
 void MyRobot::connected() {
-    qDebug() << "connected..."; // Hey server, tell me about you.
+    qDebug() << "connected...";
+    _isConnect = true;
+
 }
 
 void MyRobot::disconnected() {
     qDebug() << "disconnected...";
+    _isConnect = false;
 }
 
 void MyRobot::bytesWritten(qint64 bytes) {
-    qDebug() << bytes << " bytes written...";
+    //qDebug() << bytes << " bytes written...";
 }
 
 void MyRobot::readyRead() {
-    qDebug() << "reading..."; // read the data from the socket
+    //qDebug() << "reading..."; // read the data from the socket
     DataReceived = socket->readAll();
     emit updateUI(DataReceived);
 }
 
 void MyRobot::MyTimerSlot() {
-    qDebug() << "Timer...";
+    //qDebug() << "Timer...";
     while(Mutex.tryLock());
     socket->write(DataToSend);
     Mutex.unlock();
@@ -87,6 +88,14 @@ void MyRobot::move(Direction direction, quint8 velocity)
     case Direction::FORWARD:
         this->DataToSend[6] = 0b01010000;
         break;
+    case Direction::FORWARD_LEFT:
+        this->DataToSend[6] = 0b01010000;
+        this->DataToSend[2] = 0;
+        break;
+    case Direction::FORWARD_RIGHT:
+        this->DataToSend[6] = 0b01010000;
+        this->DataToSend[4] = 0;
+        break;
     case Direction::LEFT:
         this->DataToSend[6] = 0b00010000;
         break;
@@ -94,6 +103,13 @@ void MyRobot::move(Direction direction, quint8 velocity)
         this->DataToSend[6] = 0b01000000;
         break;
     case Direction::BACKWARD:
+        this->DataToSend[6] = 0b00000000;
+        break;
+    case Direction::BACKWARD_LEFT:
+        this->DataToSend[6] = 0b00000000;
+        this->DataToSend[2] = 0;
+        break;
+    case Direction::BACKWARD_RIGHT:
         this->DataToSend[6] = 0b00000000;
         break;
     default:
@@ -118,7 +134,7 @@ quint16 MyRobot::crc16(QByteArray adresseTab, unsigned int tailleMax) {
     unsigned int cptBit = 0;
 
     for(auto it = adresseTab.begin()+1; it != adresseTab.begin()+tailleMax; ++it) {
-        crc ^= *it;
+        crc ^= (unsigned char)*it;
         for(cptBit = 0; cptBit <= 7; ++cptBit) {
             parity = crc;
             crc >>= 1;
