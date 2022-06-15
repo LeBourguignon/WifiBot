@@ -80,7 +80,7 @@ void MainWindow::updateSpeed(QByteArray data) {
 
 void MainWindow::updateCaptor(QByteArray data) {
     unsigned char irRF = (unsigned char)data[3];
-    unsigned char irRB = (unsigned char)data[4];
+    //unsigned char irRB = (unsigned char)data[4];
 
     unsigned char irLF = (unsigned char)data[11];
     unsigned char irLB = (unsigned char)data[12];
@@ -131,7 +131,7 @@ void MainWindow::on_Connexion_clicked()
 
 void MainWindow::on_Avancer_pressed()
 {
-    myRobot.move(Direction::FORWARD, 0x7F);
+    myRobot.move(Direction::FORWARD, ui->setSpeed->value());
 }
 
 void MainWindow::on_Avancer_released()
@@ -142,7 +142,7 @@ void MainWindow::on_Avancer_released()
 
 void MainWindow::on_Gauche_pressed()
 {
-    myRobot.move(Direction::LEFT, 0x7F);
+    myRobot.move(Direction::LEFT, ui->setSpeed->value());
 }
 
 void MainWindow::on_Gauche_released()
@@ -153,7 +153,7 @@ void MainWindow::on_Gauche_released()
 
 void MainWindow::on_Droite_pressed()
 {
-    myRobot.move(Direction::RIGHT, 0x7F);
+    myRobot.move(Direction::RIGHT, ui->setSpeed->value());
 }
 
 void MainWindow::on_Droite_released()
@@ -164,7 +164,7 @@ void MainWindow::on_Droite_released()
 
 void MainWindow::on_Reculer_pressed()
 {
-    myRobot.move(Direction::BACKWARD, 0x7F);
+    myRobot.move(Direction::BACKWARD, ui->setSpeed->value());
 }
 
 void MainWindow::on_Reculer_released()
