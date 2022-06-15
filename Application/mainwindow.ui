@@ -95,8 +95,21 @@
          <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">#Connexion {
+background-color: transparent;
+border-image: url(:Start.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+#Connexion:pressed
+{
+   border-image: url(:Stop.png);
+}</string>
+       </property>
        <property name="text">
-        <string>Connexion</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -123,8 +136,17 @@
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">#Droite {
+background-color: transparent;
+border-image: url(:Droite.png);
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+         </property>
          <property name="text">
-          <string>Droite</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -136,8 +158,17 @@
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">#Gauche {
+background-color: transparent;
+border-image: url(:Gauche.png);
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+         </property>
          <property name="text">
-          <string>Gauche</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -150,8 +181,18 @@
            <italic>false</italic>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">#Avancer {
+background-color: transparent;
+border-image: url(:Avancer.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+</string>
+         </property>
          <property name="text">
-          <string> ⬆️</string>
+          <string> </string>
          </property>
         </widget>
        </item>
@@ -176,8 +217,17 @@
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">#Reculer {
+background-color: transparent;
+border-image: url(:Reculer.png);
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+         </property>
          <property name="text">
-          <string>Reculer</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -245,7 +295,7 @@
      <rect>
       <x>689</x>
       <y>109</y>
-      <width>191</width>
+      <width>205</width>
       <height>91</height>
      </rect>
     </property>
@@ -325,7 +375,7 @@
      <x>0</x>
      <y>0</y>
      <width>915</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
