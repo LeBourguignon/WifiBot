@@ -195,7 +195,7 @@ void MainWindow::GamepadPressButton(){
 
 void MainWindow::GamepadReleaseButton(){
 connect(QGamepadManager::instance(), &QGamepadManager::gamepadButtonReleaseEvent, this,
-        [this](int deviceId, QGamepadManager::GamepadButton button, double value){
+        [this](int deviceId, QGamepadManager::GamepadButton button){
         switch(button){
 
         case QGamepadManager::GamepadButton::ButtonUp:
