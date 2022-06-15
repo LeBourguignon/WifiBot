@@ -195,3 +195,25 @@ void MainWindow::on_Camera_Gauche_clicked()
 {
     camera->move(1);
 }
+
+Direction MainWindow::toDirection(double x, double y) {
+    if((x*x)+(y*y) <= (0.1*0.1))
+        return Direction::NONE;
+    else if ((-2*x)>=y && (2*x)>=y)
+        return Direction::FORWARD;
+    else if ((2*x)<=y && (0.5*x)>=y)
+        return Direction::FORWARD_RIGHT;
+    else if ((0.5*x)<=y && (-0.5*x)>=y)
+        return Direction::RIGHT;
+    else if ((-0.5*x)<=y && (-2*x)>=y)
+        return Direction::BACKWARD_RIGHT;
+    else if ((-2*x)<=y && (2*x)<=y)
+        return Direction::BACKWARD;
+    else if ((2*x)>=y && (0.5*x)<=y)
+        return Direction::BACKWARD_LEFT;
+    else if ((0.5*x)>=y && (-0.5*x)<=y)
+        return Direction::LEFT;
+    else if ((-0.5*x)>=y && (-2*x)<=y)
+        return Direction::FORWARD_LEFT;
+    else return Direction::NONE;
+}

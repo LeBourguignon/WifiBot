@@ -57,5 +57,7 @@ private:
 
     long odometryLBefore = 0;
     long odometryRBefore = 0;
+
+    Direction toDirection(double x, double y);
 };
 #endif // MAINWINDOW_H
