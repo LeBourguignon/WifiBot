@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
-#include <QGamepad>
+#include <QGamepadManager>
 
 
 
@@ -12,7 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     camera = new Camera(this);
     setStyleSheet("background-color: rgb(200,200,200)");
-    GamepadButton();
+    GamepadPressButton();
+    GamepadReleaseButton();
     GamepadLeftAxis();
 }
 
@@ -158,7 +159,7 @@ void MainWindow::on_Camera_Bas_clicked()
 }
 
 
-void MainWindow::GamepadButton(){
+void MainWindow::GamepadPressButton(){
     connect(QGamepadManager::instance(), &QGamepadManager::gamepadButtonPressEvent, this,
             [this](int deviceId, QGamepadManager::GamepadButton button, double value){
         switch(button){
@@ -174,16 +175,47 @@ void MainWindow::GamepadButton(){
             case QGamepadManager::GamepadButton::ButtonA:
             camera->move(3);
             break;
+            case QGamepadManager::GamepadButton::ButtonUp:
+            myRobot.move(Direction::FORWARD, 0x7F);
+            break;
+            case QGamepadManager::GamepadButton::ButtonLeft:
+            myRobot.move(Direction::LEFT, 0x7F);
+            break;
+            case QGamepadManager::GamepadButton::ButtonRight:
+            myRobot.move(Direction::RIGHT, 0x7F);
+            break;
+            case QGamepadManager::GamepadButton::ButtonDown:
+            myRobot.move(Direction::BACKWARD, 0x7F);
+            break;
             default:
             break;
         }
     });
 }
 
+void MainWindow::GamepadReleaseButton(){
+connect(QGamepadManager::instance(), &QGamepadManager::gamepadButtonReleaseEvent, this,
+        [this](int deviceId, QGamepadManager::GamepadButton button, double value){
+        switch(button){
+
+        case QGamepadManager::GamepadButton::ButtonUp:
+        case QGamepadManager::GamepadButton::ButtonLeft:
+        case QGamepadManager::GamepadButton::ButtonRight:
+        case QGamepadManager::GamepadButton::ButtonDown:
+        myRobot.move();
+        break;
+        default:
+        break;
+
+        }
+
+});
+}
+
 void MainWindow::GamepadLeftAxis(){
     connect(QGamepadManager::instance(), &QGamepadManager::gamepadAxisEvent, this,
             [this](int deviceId, QGamepadManager::GamepadAxis button, double value){
-       //qDebug() << value;
+       qDebug() << value;
        qDebug() << button;
         switch(button){
             case QGamepadManager::GamepadAxis::AxisLeftX:
