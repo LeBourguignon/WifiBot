@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QKeyEvent>
+
 
 #include "camera.h"
 #include "myrobot.h"
@@ -17,6 +19,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
 
 private slots:
     void updateWindow(QByteArray data);
@@ -47,10 +50,18 @@ private slots:
 
     void on_Camera_Gauche_clicked();
 
+protected:
+    void MainWindow::keyPressEvent(QKeyEvent *event);
+    void MainWindow::keyReleaseEvent(QKeyEvent *event);
+    void MainWindow::GamepadPressButton();
+    void MainWindow::GamepadReleaseButton();
+    void MainWindow::GamepadLeftAxis();
+
 private:
     Ui::MainWindow *ui;
     Camera *camera;
     MyRobot myRobot;
+
     void updateBattery(QByteArray data);
     void updateSpeed(QByteArray data);
     void updateCaptor(QByteArray data);
