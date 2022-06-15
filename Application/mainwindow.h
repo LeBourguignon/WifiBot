@@ -22,6 +22,7 @@ public:
 
 
 private slots:
+    void updateWindow(QByteArray data);
 
     void on_Connexion_clicked();
 
@@ -61,6 +62,13 @@ private:
     Camera *camera;
     MyRobot myRobot;
 
+    void updateBattery(QByteArray data);
+    void updateSpeed(QByteArray data);
+    void updateCaptor(QByteArray data);
 
+    long odometryLBefore = 0;
+    long odometryRBefore = 0;
+
+    Direction toDirection(double x, double y);
 };
 #endif // MAINWINDOW_H

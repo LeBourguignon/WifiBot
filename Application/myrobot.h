@@ -26,6 +26,7 @@ public:
 
 signals:
     void updateUI(const QByteArray Data);
+
 public slots:
     void connected();
     void disconnected();
