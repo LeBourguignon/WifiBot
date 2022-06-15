@@ -36,10 +36,10 @@ void MainWindow::updateWindow(QByteArray data) {
 void MainWindow::updateBattery(QByteArray data) {
     unsigned char battery = (unsigned char)data[2];
     if(battery > 170) {
-        ui->Niv_Batterie->display(200);
+        ui->battery->setText("En charge");
     }
     else {
-        ui->Niv_Batterie->display((battery * 100 / 123));
+        ui->battery->setText(QString::number(battery * 100 / 123) + " %");
     }
 }
 
@@ -73,13 +73,14 @@ void MainWindow::updateSpeed(QByteArray data) {
     if (speed > 1000000)
         speed = 0;
 
-    ui->Vitesse_Roue->display(speed);
+    QString textSpeed = QString::number(speed) + " m/s";
+    ui->speed->setText(textSpeed);
     //qDebug() << "Speed: " << speed;
 }
 
 void MainWindow::updateCaptor(QByteArray data) {
     unsigned char irRF = (unsigned char)data[3];
-    unsigned char irRB = (unsigned char)data[4];
+    //unsigned char irRB = (unsigned char)data[4];
 
     unsigned char irLF = (unsigned char)data[11];
     unsigned char irLB = (unsigned char)data[12];
@@ -87,24 +88,24 @@ void MainWindow::updateCaptor(QByteArray data) {
     //qDebug() << "Captor: " << irLF << "; " << irRF << "; " << irLB << "; " << irRB;
 
     if (irLF >= 180) {
-
+        ui->sensorFL->setValue(100);
     }
     else {
-
+        ui->sensorFL->setValue(irLF * 100 / 180);
     }
 
     if (irRF >= 180) {
-
+        ui->sensorFR->setValue(100);
     }
     else {
-
+        ui->sensorFR->setValue(irRF * 100 / 180);
     }
 
-    if (irRB >= 180) {
-
+    if (irLB >= 180) {
+        ui->sensorBL->setValue(100);
     }
     else {
-
+        ui->sensorBL->setValue(irLB * 100 / 180);
     }
 
     /* Capteur de marche pas
@@ -130,7 +131,7 @@ void MainWindow::on_Connexion_clicked()
 
 void MainWindow::on_Avancer_pressed()
 {
-    myRobot.move(Direction::FORWARD, 0x7F);
+    myRobot.move(Direction::FORWARD, ui->setSpeed->value());
 }
 
 void MainWindow::on_Avancer_released()
@@ -141,7 +142,7 @@ void MainWindow::on_Avancer_released()
 
 void MainWindow::on_Gauche_pressed()
 {
-    myRobot.move(Direction::LEFT, 0x7F);
+    myRobot.move(Direction::LEFT, ui->setSpeed->value());
 }
 
 void MainWindow::on_Gauche_released()
@@ -152,7 +153,7 @@ void MainWindow::on_Gauche_released()
 
 void MainWindow::on_Droite_pressed()
 {
-    myRobot.move(Direction::RIGHT, 0x7F);
+    myRobot.move(Direction::RIGHT, ui->setSpeed->value());
 }
 
 void MainWindow::on_Droite_released()
@@ -163,7 +164,7 @@ void MainWindow::on_Droite_released()
 
 void MainWindow::on_Reculer_pressed()
 {
-    myRobot.move(Direction::BACKWARD, 0x7F);
+    myRobot.move(Direction::BACKWARD, ui->setSpeed->value());
 }
 
 void MainWindow::on_Reculer_released()
