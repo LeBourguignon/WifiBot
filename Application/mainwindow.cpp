@@ -283,6 +283,10 @@ void MainWindow::GamepadPressButton(){
             case QGamepadManager::GamepadButton::ButtonDown:
             myRobot.move(Direction::BACKWARD, 0x7F);
             break;
+            case QGamepadManager::GamepadButton::ButtonR2:
+            r2Press = value;
+            qDebug() << value;
+            break;
             default:
             break;
         }
@@ -311,16 +315,26 @@ connect(QGamepadManager::instance(), &QGamepadManager::gamepadButtonReleaseEvent
 void MainWindow::GamepadLeftAxis(){
     connect(QGamepadManager::instance(), &QGamepadManager::gamepadAxisEvent, this,
             [this](int deviceId, QGamepadManager::GamepadAxis button, double value){
-       qDebug() << value;
+       //qDebug() << value;
        qDebug() << button;
         switch(button){
             case QGamepadManager::GamepadAxis::AxisLeftX:
-            camera->move(2);
+            axisLeftX = value;
+            break;
+            case QGamepadManager::GamepadAxis::AxisLeftY:
+            axisLeftY = value;
+            break;
+            case QGamepadManager::GamepadAxis::AxisRightX:
+            axisRightX = value;
+            break;
+            case QGamepadManager::GamepadAxis::AxisRightY:
+            axisRightY = value;
             break;
             default:
             break;
         }
     });
+}
 
 Direction MainWindow::toDirection(double x, double y) {
     if((x*x)+(y*y) <= (0.1*0.1))
@@ -343,3 +357,4 @@ Direction MainWindow::toDirection(double x, double y) {
         return Direction::FORWARD_LEFT;
     else return Direction::NONE;
 }
+
