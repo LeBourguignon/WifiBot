@@ -183,19 +183,19 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     switch(touche){
 
             case Qt::Key_Z:
-            myRobot.move(Direction::FORWARD, 0x7F);
+            myRobot.move(Direction::FORWARD, ui->setSpeed->value());
             break;
 
             case Qt::Key_Q:
-            myRobot.move(Direction::LEFT, 0x7F);
+            myRobot.move(Direction::LEFT, ui->setSpeed->value());
             break;
 
             case Qt::Key_D:
-            myRobot.move(Direction::RIGHT, 0x7F);
+            myRobot.move(Direction::RIGHT, ui->setSpeed->value());
             break;
 
             case Qt::Key_S:
-            myRobot.move(Direction::BACKWARD, 0x7F);
+            myRobot.move(Direction::BACKWARD, ui->setSpeed->value());
             break;
 
             case Qt::Key_I:
@@ -272,16 +272,16 @@ void MainWindow::GamepadPressButton(){
             camera->move(3);
             break;
             case QGamepadManager::GamepadButton::ButtonUp:
-            myRobot.move(Direction::FORWARD, 0x7F);
+            myRobot.move(Direction::FORWARD, ui->setSpeed->value());
             break;
             case QGamepadManager::GamepadButton::ButtonLeft:
-            myRobot.move(Direction::LEFT, 0x7F);
+            myRobot.move(Direction::LEFT, ui->setSpeed->value());
             break;
             case QGamepadManager::GamepadButton::ButtonRight:
-            myRobot.move(Direction::RIGHT, 0x7F);
+            myRobot.move(Direction::RIGHT, ui->setSpeed->value());
             break;
             case QGamepadManager::GamepadButton::ButtonDown:
-            myRobot.move(Direction::BACKWARD, 0x7F);
+            myRobot.move(Direction::BACKWARD, ui->setSpeed->value());
             break;
             default:
             break;
@@ -291,7 +291,7 @@ void MainWindow::GamepadPressButton(){
 
 void MainWindow::GamepadReleaseButton(){
 connect(QGamepadManager::instance(), &QGamepadManager::gamepadButtonReleaseEvent, this,
-        [this](int deviceId, QGamepadManager::GamepadButton button, double value){
+        [this](int deviceId, QGamepadManager::GamepadButton button){
         switch(button){
 
         case QGamepadManager::GamepadButton::ButtonUp:
@@ -321,6 +321,7 @@ void MainWindow::GamepadLeftAxis(){
             break;
         }
     });
+}
 
 Direction MainWindow::toDirection(double x, double y) {
     if((x*x)+(y*y) <= (0.1*0.1))
@@ -342,4 +343,7 @@ Direction MainWindow::toDirection(double x, double y) {
     else if ((-0.5*x)>=y && (-2*x)<=y)
         return Direction::FORWARD_LEFT;
     else return Direction::NONE;
+}
+
+void MainWindow::controlMove(ControllerType type, Direction direction, int speed) {
 }
