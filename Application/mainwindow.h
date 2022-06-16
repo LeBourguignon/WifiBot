@@ -66,6 +66,14 @@ private:
     void updateSpeed(QByteArray data);
     void updateCaptor(QByteArray data);
 
+    double axisLeftX;
+    double axisLeftY;
+
+    double axisRightX;
+    double axisRightY;
+
+    double r2Press;
+
     long odometryLBefore = 0;
     long odometryRBefore = 0;
 
