@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     
     GamepadPressButton();
     GamepadReleaseButton();
-    GamepadLeftAxis();
+    GamepadAxis();
     
     connect(&myRobot, SIGNAL(updateUI(QByteArray)), this, SLOT(updateWindow(QByteArray)));
 }
@@ -137,45 +137,45 @@ void MainWindow::on_Connexion_clicked()
 
 void MainWindow::on_Avancer_pressed()
 {
-    myRobot.move(Direction::FORWARD, ui->setSpeed->value());
+    controlMoveRobot(ControllerType::INTERFACE, Direction::FORWARD, ui->setSpeed->value());
 }
 
 void MainWindow::on_Avancer_released()
 {
-    myRobot.move();
+    controlMoveRobot(ControllerType::INTERFACE);
 }
 
 
 void MainWindow::on_Gauche_pressed()
 {
-    myRobot.move(Direction::LEFT, ui->setSpeed->value());
+    controlMoveRobot(ControllerType::INTERFACE, Direction::LEFT, ui->setSpeed->value());
 }
 
 void MainWindow::on_Gauche_released()
 {
-    myRobot.move();
+    controlMoveRobot(ControllerType::INTERFACE);
 }
 
 
 void MainWindow::on_Droite_pressed()
 {
-    myRobot.move(Direction::RIGHT, ui->setSpeed->value());
+    controlMoveRobot(ControllerType::INTERFACE, Direction::RIGHT, ui->setSpeed->value());
 }
 
 void MainWindow::on_Droite_released()
 {
-    myRobot.move();
+    controlMoveRobot(ControllerType::INTERFACE);
 }
 
 
 void MainWindow::on_Reculer_pressed()
 {
-    myRobot.move(Direction::BACKWARD, ui->setSpeed->value());
+    controlMoveRobot(ControllerType::INTERFACE, Direction::BACKWARD, ui->setSpeed->value());
 }
 
 void MainWindow::on_Reculer_released()
 {
-    myRobot.move();
+    controlMoveRobot(ControllerType::INTERFACE);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event){
@@ -183,35 +183,35 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     switch(touche){
 
             case Qt::Key_Z:
-            myRobot.move(Direction::FORWARD, ui->setSpeed->value());
+            controlMoveRobot(ControllerType::INTERFACE, Direction::FORWARD, ui->setSpeed->value());
             break;
 
             case Qt::Key_Q:
-            myRobot.move(Direction::LEFT, ui->setSpeed->value());
+            controlMoveRobot(ControllerType::INTERFACE, Direction::LEFT, ui->setSpeed->value());
             break;
 
             case Qt::Key_D:
-            myRobot.move(Direction::RIGHT, ui->setSpeed->value());
+            controlMoveRobot(ControllerType::INTERFACE, Direction::RIGHT, ui->setSpeed->value());
             break;
 
             case Qt::Key_S:
-            myRobot.move(Direction::BACKWARD, ui->setSpeed->value());
+            controlMoveRobot(ControllerType::INTERFACE, Direction::BACKWARD, ui->setSpeed->value());
             break;
 
             case Qt::Key_I:
-            camera->move(0);
+            controlMoveCamera(ControllerType::INTERFACE, Direction::FORWARD);
             break;
 
             case Qt::Key_J:
-            camera->move(1);
+            controlMoveCamera(ControllerType::INTERFACE, Direction::LEFT);
             break;
 
             case Qt::Key_L:
-            camera->move(2);
+            controlMoveCamera(ControllerType::INTERFACE, Direction::RIGHT);
             break;
 
             case Qt::Key_K:
-            camera->move(3);
+            controlMoveCamera(ControllerType::INTERFACE, Direction::BACKWARD);
             break;
 
      }
@@ -221,38 +221,35 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
 void MainWindow::keyReleaseEvent(QKeyEvent *event){
     int touche = event->key();
     switch(touche){
-
             case Qt::Key_Z:
             case Qt::Key_Q:
             case Qt::Key_D:
             case Qt::Key_S:
-            myRobot.move();
+            controlMoveRobot(ControllerType::INTERFACE);
             break;
-
      }
-
 }
 
 
 void MainWindow::on_Camera_Haut_clicked()
 {
-    camera->move(0);
+    controlMoveCamera(ControllerType::INTERFACE, Direction::FORWARD);
 }
 
 void MainWindow::on_Camera_Gauche_clicked()
 {
-    camera->move(1);
+    controlMoveCamera(ControllerType::INTERFACE, Direction::LEFT);
 }
 
 void MainWindow::on_Camera_Droite_clicked()
 {
-    camera->move(2);
+    controlMoveCamera(ControllerType::INTERFACE, Direction::RIGHT);
 }
 
 
 void MainWindow::on_Camera_Bas_clicked()
 {
-    camera->move(3);
+    controlMoveCamera(ControllerType::INTERFACE, Direction::BACKWARD);
 }
 
 void MainWindow::GamepadPressButton(){
@@ -260,33 +257,43 @@ void MainWindow::GamepadPressButton(){
             [this](int deviceId, QGamepadManager::GamepadButton button, double value){
         switch(button){
             case QGamepadManager::GamepadButton::ButtonY:
-            camera->move(0);
+            controlMoveCamera(ControllerType::MANNETTE_BUTTON, Direction::FORWARD);
             break;
+
             case QGamepadManager::GamepadButton::ButtonX:
-            camera->move(1);
+            controlMoveCamera(ControllerType::MANNETTE_BUTTON, Direction::LEFT);
             break;
+
             case QGamepadManager::GamepadButton::ButtonB:
-            camera->move(2);
+            controlMoveCamera(ControllerType::MANNETTE_BUTTON, Direction::RIGHT);
             break;
+
             case QGamepadManager::GamepadButton::ButtonA:
-            camera->move(3);
+            controlMoveCamera(ControllerType::MANNETTE_BUTTON, Direction::BACKWARD);
             break;
+
             case QGamepadManager::GamepadButton::ButtonUp:
-            myRobot.move(Direction::FORWARD, ui->setSpeed->value());
+            controlMoveRobot(ControllerType::MANNETTE_BUTTON, Direction::FORWARD, ui->setSpeed->value());
             break;
+
             case QGamepadManager::GamepadButton::ButtonLeft:
-            myRobot.move(Direction::LEFT, ui->setSpeed->value());
+            controlMoveRobot(ControllerType::MANNETTE_BUTTON, Direction::LEFT, ui->setSpeed->value());
             break;
+
             case QGamepadManager::GamepadButton::ButtonRight:
-            myRobot.move(Direction::RIGHT, ui->setSpeed->value());
+            controlMoveRobot(ControllerType::MANNETTE_BUTTON, Direction::RIGHT, ui->setSpeed->value());
             break;
+
             case QGamepadManager::GamepadButton::ButtonDown:
-            myRobot.move(Direction::BACKWARD, ui->setSpeed->value());
+            controlMoveRobot(ControllerType::MANNETTE_BUTTON, Direction::BACKWARD, ui->setSpeed->value());
             break;
+
             case QGamepadManager::GamepadButton::ButtonR2:
+            //qDebug() << value;
             r2Press = value;
-            qDebug() << value;
+            controlMoveRobot(ControllerType::MANNETTE_R2);
             break;
+
             default:
             break;
         }
@@ -294,69 +301,112 @@ void MainWindow::GamepadPressButton(){
 }
 
 void MainWindow::GamepadReleaseButton(){
-connect(QGamepadManager::instance(), &QGamepadManager::gamepadButtonReleaseEvent, this,
-        [this](int deviceId, QGamepadManager::GamepadButton button){
-        switch(button){
+    connect(QGamepadManager::instance(), &QGamepadManager::gamepadButtonReleaseEvent, this,
+            [this](int deviceId, QGamepadManager::GamepadButton button){
+            switch(button){
+            case QGamepadManager::GamepadButton::ButtonUp:
+            case QGamepadManager::GamepadButton::ButtonLeft:
+            case QGamepadManager::GamepadButton::ButtonRight:
+            case QGamepadManager::GamepadButton::ButtonDown:
+            controlMoveRobot(ControllerType::MANNETTE_BUTTON);
+            break;
 
-        case QGamepadManager::GamepadButton::ButtonUp:
-        case QGamepadManager::GamepadButton::ButtonLeft:
-        case QGamepadManager::GamepadButton::ButtonRight:
-        case QGamepadManager::GamepadButton::ButtonDown:
-        myRobot.move();
-        break;
-        default:
-        break;
+            default:
+            break;
 
-        }
+            }
 
-});
+    });
 }
 
-void MainWindow::GamepadLeftAxis(){
+void MainWindow::GamepadAxis(){
     connect(QGamepadManager::instance(), &QGamepadManager::gamepadAxisEvent, this,
             [this](int deviceId, QGamepadManager::GamepadAxis button, double value){
        //qDebug() << value;
-       qDebug() << button;
+       //qDebug() << button;
         switch(button){
             case QGamepadManager::GamepadAxis::AxisLeftX:
             axisLeftX = value;
+            controlMoveRobot(ControllerType::MANNETTE_AXIS);
             break;
+
             case QGamepadManager::GamepadAxis::AxisLeftY:
             axisLeftY = value;
+            controlMoveRobot(ControllerType::MANNETTE_AXIS);
             break;
+
             case QGamepadManager::GamepadAxis::AxisRightX:
             axisRightX = value;
+            controlMoveCamera(ControllerType::MANNETTE_AXIS);
             break;
+
             case QGamepadManager::GamepadAxis::AxisRightY:
             axisRightY = value;
+            controlMoveCamera(ControllerType::MANNETTE_AXIS);
             break;
+
             default:
             break;
         }
     });
 }
 
-Direction MainWindow::toDirection(double x, double y) {
+Direction MainWindow::toDirectionRobot(double x, double y) {
     if((x*x)+(y*y) <= (0.1*0.1))
         return Direction::NONE;
-    else if ((-2*x)>=y && (2*x)>=y)
-        return Direction::FORWARD;
-    else if ((2*x)<=y && (0.5*x)>=y)
-        return Direction::FORWARD_RIGHT;
-    else if ((0.5*x)<=y && (-0.5*x)>=y)
-        return Direction::RIGHT;
-    else if ((-0.5*x)<=y && (-2*x)>=y)
-        return Direction::BACKWARD_RIGHT;
     else if ((-2*x)<=y && (2*x)<=y)
-        return Direction::BACKWARD;
+        return Direction::FORWARD;
     else if ((2*x)>=y && (0.5*x)<=y)
-        return Direction::BACKWARD_LEFT;
+        return Direction::FORWARD_RIGHT;
     else if ((0.5*x)>=y && (-0.5*x)<=y)
-        return Direction::LEFT;
+        return Direction::RIGHT;
     else if ((-0.5*x)>=y && (-2*x)<=y)
+        return Direction::BACKWARD_RIGHT;
+    else if ((-2*x)>=y && (2*x)>=y)
+        return Direction::BACKWARD;
+    else if ((2*x)<=y && (0.5*x)>=y)
+        return Direction::BACKWARD_LEFT;
+    else if ((0.5*x)<=y && (-0.5*x)>=y)
+        return Direction::LEFT;
+    else if ((-0.5*x)<=y && (-2*x)>=y)
         return Direction::FORWARD_LEFT;
     else return Direction::NONE;
 }
 
-void MainWindow::controlMove(ControllerType type, Direction direction, int speed) {
+void MainWindow::controlMoveRobot(ControllerType type, Direction direction, int speed) {
+    Direction mannetteDirection = toDirectionRobot(axisLeftX, axisLeftY);
+    if ((type == ControllerType::INTERFACE || type == ControllerType::MANNETTE_BUTTON) && mannetteDirection == Direction::NONE)
+        myRobot.move(direction, speed);
+    else if (type == ControllerType::MANNETTE_AXIS) {
+        if (allAxisLeft)
+            myRobot.move(mannetteDirection, r2Press*255);
+        allAxisLeft = !allAxisLeft;
+    }
+    else if (type == ControllerType::MANNETTE_R2 && allAxisLeft)
+        myRobot.move(mannetteDirection, r2Press*255);
+}
+
+Direction MainWindow::toDirectionCamera(double x, double y) {
+    if((x*x)+(y*y) <= (0.1*0.1))
+        return Direction::NONE;
+    else if ((-x)<=y && (x)<=y)
+        return Direction::FORWARD;
+    else if ((-x)<=y && (x)>=y)
+        return Direction::RIGHT;
+    else if ((-x)>=y && (x)>=y)
+        return Direction::BACKWARD;
+    else if ((-x)>=y && (x)<=y)
+        return Direction::LEFT;
+    else return Direction::NONE;
+}
+
+void MainWindow::controlMoveCamera(ControllerType type, Direction direction) {
+    Direction mannetteDirection = toDirectionCamera(axisRightX, axisRightY);
+    if ((type == ControllerType::INTERFACE || type == ControllerType::MANNETTE_BUTTON) && mannetteDirection == Direction::NONE)
+        camera->move(direction);
+    else if (type == ControllerType::MANNETTE_AXIS) {
+        if (allAxisRight)
+            camera->move(mannetteDirection);
+        allAxisRight = !allAxisRight;
+    }
 }

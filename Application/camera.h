@@ -4,6 +4,8 @@
 #include <QWebEngineView>
 #include <QMainWindow>
 
+#include "direction.h".h"
+
 class Camera
 {
 private:
@@ -12,7 +14,7 @@ private:
 
 public:
     Camera(QMainWindow *_mainWindow);
-    void move(int a);
+    void move(Direction direction);
 };
 
 #endif // CAMERA_H

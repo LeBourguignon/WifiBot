@@ -7,6 +7,7 @@
 
 #include "camera.h"
 #include "myrobot.h"
+#include "controllerType.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -55,7 +56,7 @@ protected:
     void MainWindow::keyReleaseEvent(QKeyEvent *event);
     void MainWindow::GamepadPressButton();
     void MainWindow::GamepadReleaseButton();
-    void MainWindow::GamepadLeftAxis();
+    void MainWindow::GamepadAxis();
 
 private:
     Ui::MainWindow *ui;
@@ -68,15 +69,21 @@ private:
 
     double axisLeftX;
     double axisLeftY;
+    bool allAxisLeft = false;
 
     double axisRightX;
     double axisRightY;
+    bool allAxisRight = false;
 
     double r2Press;
 
     long odometryLBefore = 0;
     long odometryRBefore = 0;
 
-    Direction toDirection(double x, double y);
+    Direction toDirectionRobot(double x, double y);
+    void controlMoveRobot(ControllerType type, Direction direction = Direction::NONE, int speed = 0);
+
+    Direction toDirectionCamera(double x, double y);
+    void controlMoveCamera(ControllerType type, Direction direction = Direction::NONE);
 };
 #endif // MAINWINDOW_H
