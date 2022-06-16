@@ -183,19 +183,19 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     switch(touche){
 
             case Qt::Key_Z:
-            myRobot.move(Direction::FORWARD, 0x7F);
+            myRobot.move(Direction::FORWARD, ui->setSpeed->value());
             break;
 
             case Qt::Key_Q:
-            myRobot.move(Direction::LEFT, 0x7F);
+            myRobot.move(Direction::LEFT, ui->setSpeed->value());
             break;
 
             case Qt::Key_D:
-            myRobot.move(Direction::RIGHT, 0x7F);
+            myRobot.move(Direction::RIGHT, ui->setSpeed->value());
             break;
 
             case Qt::Key_S:
-            myRobot.move(Direction::BACKWARD, 0x7F);
+            myRobot.move(Direction::BACKWARD, ui->setSpeed->value());
             break;
 
             case Qt::Key_I:
@@ -272,16 +272,16 @@ void MainWindow::GamepadPressButton(){
             camera->move(3);
             break;
             case QGamepadManager::GamepadButton::ButtonUp:
-            myRobot.move(Direction::FORWARD, 0x7F);
+            myRobot.move(Direction::FORWARD, ui->setSpeed->value());
             break;
             case QGamepadManager::GamepadButton::ButtonLeft:
-            myRobot.move(Direction::LEFT, 0x7F);
+            myRobot.move(Direction::LEFT, ui->setSpeed->value());
             break;
             case QGamepadManager::GamepadButton::ButtonRight:
-            myRobot.move(Direction::RIGHT, 0x7F);
+            myRobot.move(Direction::RIGHT, ui->setSpeed->value());
             break;
             case QGamepadManager::GamepadButton::ButtonDown:
-            myRobot.move(Direction::BACKWARD, 0x7F);
+            myRobot.move(Direction::BACKWARD, ui->setSpeed->value());
             break;
             case QGamepadManager::GamepadButton::ButtonR2:
             r2Press = value;
@@ -358,3 +358,5 @@ Direction MainWindow::toDirection(double x, double y) {
     else return Direction::NONE;
 }
 
+void MainWindow::controlMove(ControllerType type, Direction direction, int speed) {
+}
