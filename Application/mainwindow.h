@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QKeyEvent>
 
+//#include <windows.h>
+//#include <XInput.h>
 
 #include "camera.h"
 #include "myrobot.h"

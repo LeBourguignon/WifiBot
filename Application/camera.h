@@ -14,7 +14,7 @@ private:
 
 public:
     Camera(QMainWindow *_mainWindow);
-    void move(Direction direction);
+    void move(Direction direction, bool slow = false);
 };
 
 #endif // CAMERA_H
