@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1280</width>
-    <height>763</height>
+    <width>1194</width>
+    <height>805</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,10 +20,10 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>-270</y>
-      <width>1001</width>
-      <height>737</height>
+      <x>0</x>
+      <y>0</y>
+      <width>1191</width>
+      <height>776</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -43,17 +43,28 @@
       <number>10</number>
      </property>
      <item>
-      <widget class="QLabel" name="label">
-       <property name="font">
-        <font>
-         <family>American Typewriter</family>
-         <pointsize>55</pointsize>
-         <italic>false</italic>
-         <bold>true</bold>
-        </font>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
        </property>
-       <property name="styleSheet">
-        <string notr="true">#label{
+       <property name="leftMargin">
+        <number>60</number>
+       </property>
+       <property name="rightMargin">
+        <number>60</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <family>American Typewriter</family>
+           <pointsize>55</pointsize>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#label{
 background-color: transparent;
 border-image: url(:Titre.png);
 
@@ -61,14 +72,16 @@ background: none;
 border: none;
 background-repeat: none;
 }</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -107,10 +120,24 @@ background-repeat: none;
          </property>
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_4">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
            <item>
-            <widget class="QLabel" name="label_2">
-             <property name="styleSheet">
-              <string notr="true">#label_2{
+            <layout class="QVBoxLayout" name="verticalLayout_7">
+             <property name="leftMargin">
+              <number>20</number>
+             </property>
+             <property name="rightMargin">
+              <number>20</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="styleSheet">
+                <string notr="true">#label_2{
 background-color: transparent;
 border-image: url(:Energie.png);
 
@@ -118,14 +145,16 @@ background: none;
 border: none;
 background-repeat: none;
 }</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-             </property>
-            </widget>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
             <widget class="QLabel" name="battery">
@@ -156,9 +185,17 @@ background-repeat: none;
             <enum>QLayout::SetDefaultConstraint</enum>
            </property>
            <item>
-            <widget class="QLabel" name="label_4">
-             <property name="styleSheet">
-              <string notr="true">#label_4{
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <property name="leftMargin">
+              <number>20</number>
+             </property>
+             <property name="rightMargin">
+              <number>20</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="styleSheet">
+                <string notr="true">#label_4{
 background-color: transparent;
 border-image: url(:Capteurs.png);
 
@@ -166,11 +203,13 @@ background: none;
 border: none;
 background-repeat: none;
 }</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
             <layout class="QGridLayout" name="gridLayout">
@@ -283,10 +322,24 @@ background-repeat: none;
          </item>
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_6">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
            <item>
-            <widget class="QLabel" name="label_9">
-             <property name="styleSheet">
-              <string notr="true">#label_9{
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <property name="leftMargin">
+              <number>20</number>
+             </property>
+             <property name="rightMargin">
+              <number>20</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_9">
+               <property name="styleSheet">
+                <string notr="true">#label_9{
 background-color: transparent;
 border-image: url(:Vitesse.png);
 
@@ -294,14 +347,16 @@ background: none;
 border: none;
 background-repeat: none;
 }</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-             </property>
-            </widget>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
             <widget class="QLabel" name="speed">
@@ -333,7 +388,7 @@ background-repeat: none;
         <number>5</number>
        </property>
        <property name="topMargin">
-        <number>20</number>
+        <number>0</number>
        </property>
        <item>
         <layout class="QGridLayout" name="gridLayout_2">
@@ -438,26 +493,7 @@ background-repeat: none;
          <property name="rightMargin">
           <number>60</number>
          </property>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_3">
-           <property name="styleSheet">
-            <string notr="true">#label_3{
-background-color: transparent;
-border-image: url(:Controle.png);
-background: none;
-border: none;
-background-repeat: none;
-}</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignBottom|Qt::AlignHCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
+         <item row="3" column="0">
           <widget class="QSlider" name="setSpeed">
            <property name="styleSheet">
             <string notr="true">#setSpeed{
@@ -478,42 +514,58 @@ background-repeat: none;
            </property>
           </widget>
          </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Vitesse du robot</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
          <item row="0" column="0">
-          <widget class="QPushButton" name="Connexion">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
+          <layout class="QVBoxLayout" name="verticalLayout_10">
+           <property name="leftMargin">
+            <number>40</number>
            </property>
-           <property name="font">
-            <font>
-             <bold>true</bold>
-            </font>
+           <property name="rightMargin">
+            <number>40</number>
            </property>
-           <property name="styleSheet">
-            <string notr="true">#Connexion {
+           <item>
+            <widget class="QPushButton" name="Connexion">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#Connexion {
 background-color: transparent;
 border-image: url(:Connexion.png);
 background: none;
 border: none;
 background-repeat: none;
-}
-#Connexion:pressed
-{
-   border-image: url(:Deconnexion.png);
 }</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>16</width>
-             <height>16</height>
-            </size>
-           </property>
-          </widget>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
@@ -621,8 +673,8 @@ background-repeat: none;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1280</width>
-     <height>22</height>
+     <width>1194</width>
+     <height>25</height>
     </rect>
    </property>
   </widget>
