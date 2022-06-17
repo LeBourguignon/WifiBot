@@ -3,8 +3,6 @@
 #include <QDebug>
 #include <QGamepadManager>
 
-
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -120,6 +118,37 @@ void MainWindow::updateCaptor(QByteArray data) {
     else {
         ui->sensorBR->setValue(irRB * 100 / 180);
     }
+
+
+    /*
+    if (ui->sensorBL->value() == 100 || ui->sensorBR->value() == 100 || ui->sensorFL->value() == 100 || ui->sensorFL->value() == 100 || ui->sensorFR->value() == 100) {
+        // Create a Vibraton State
+        XINPUT_VIBRATION Vibration;
+
+        // Zeroise the Vibration
+        ZeroMemory(&Vibration, sizeof(XINPUT_VIBRATION));
+
+        // Set the Vibration Values
+        Vibration.wLeftMotorSpeed = 1;
+        Vibration.wRightMotorSpeed = 1;
+
+        // Vibrate the controller
+        XInputSetState(0, &Vibration);
+    }
+    else {
+        // Create a Vibraton State
+        XINPUT_VIBRATION Vibration;
+
+        // Zeroise the Vibration
+        ZeroMemory(&Vibration, sizeof(XINPUT_VIBRATION));
+
+        // Set the Vibration Values
+        Vibration.wLeftMotorSpeed = 0;
+        Vibration.wRightMotorSpeed = 0;
+
+        // Vibrate the controller
+        XInputSetState(0, &Vibration);
+    }*/
 }
 
 void MainWindow::on_Connexion_clicked()
