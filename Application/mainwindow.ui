@@ -20,10 +20,10 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>63</x>
-      <y>-30</y>
-      <width>1121</width>
-      <height>741</height>
+      <x>20</x>
+      <y>-270</y>
+      <width>1001</width>
+      <height>737</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -46,11 +46,24 @@
       <widget class="QLabel" name="label">
        <property name="font">
         <font>
-         <pointsize>22</pointsize>
+         <family>American Typewriter</family>
+         <pointsize>55</pointsize>
+         <italic>false</italic>
+         <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">#label{
+background-color: transparent;
+border-image: url(:Titre.png);
+
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+       </property>
        <property name="text">
-        <string>CONTROLE TON COPAIN !</string>
+        <string/>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -76,13 +89,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QProgressBar" name="sensorBR">
-         <property name="value">
-          <number>0</number>
-         </property>
-        </widget>
-       </item>
-       <item>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <property name="spacing">
           <number>10</number>
@@ -103,8 +109,18 @@
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
             <widget class="QLabel" name="label_2">
+             <property name="styleSheet">
+              <string notr="true">#label_2{
+background-color: transparent;
+border-image: url(:Energie.png);
+
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+             </property>
              <property name="text">
-              <string>IL TE RESTE TOUT CA D'ENERGIE:</string>
+              <string/>
              </property>
              <property name="alignment">
               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -113,6 +129,14 @@
            </item>
            <item>
             <widget class="QLabel" name="battery">
+             <property name="styleSheet">
+              <string notr="true">#battery{
+background-color: transparent;
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+             </property>
              <property name="text">
               <string>Chargement des données</string>
              </property>
@@ -133,8 +157,18 @@
            </property>
            <item>
             <widget class="QLabel" name="label_4">
+             <property name="styleSheet">
+              <string notr="true">#label_4{
+background-color: transparent;
+border-image: url(:Capteurs.png);
+
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+             </property>
              <property name="text">
-              <string>ATTENTION OBSTACLE!!!</string>
+              <string/>
              </property>
             </widget>
            </item>
@@ -155,6 +189,14 @@
              </item>
              <item row="2" column="1">
               <widget class="QLabel" name="label_8">
+               <property name="styleSheet">
+                <string notr="true">#label_8{
+background-color: transparent;
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+               </property>
                <property name="text">
                 <string>Arrière droit</string>
                </property>
@@ -162,6 +204,14 @@
              </item>
              <item row="0" column="0">
               <widget class="QLabel" name="label_5">
+               <property name="styleSheet">
+                <string notr="true">#label_5{
+background-color: transparent;
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+               </property>
                <property name="text">
                 <string>Avant gauche</string>
                </property>
@@ -172,6 +222,14 @@
              </item>
              <item row="2" column="0">
               <widget class="QLabel" name="label_7">
+               <property name="styleSheet">
+                <string notr="true">#label_7{
+background-color: transparent;
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+               </property>
                <property name="text">
                 <string>Arriére gauche</string>
                </property>
@@ -182,6 +240,14 @@
              </item>
              <item row="0" column="1">
               <widget class="QLabel" name="label_6">
+               <property name="styleSheet">
+                <string notr="true">#label_6{
+background-color: transparent;
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+               </property>
                <property name="text">
                 <string>Avant droit</string>
                </property>
@@ -204,6 +270,13 @@
                </property>
               </widget>
              </item>
+             <item row="3" column="1">
+              <widget class="QProgressBar" name="sensorBR">
+               <property name="value">
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
           </layout>
@@ -212,8 +285,18 @@
           <layout class="QVBoxLayout" name="verticalLayout_6">
            <item>
             <widget class="QLabel" name="label_9">
+             <property name="styleSheet">
+              <string notr="true">#label_9{
+background-color: transparent;
+border-image: url(:Vitesse.png);
+
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+             </property>
              <property name="text">
-              <string>SUPER VITESSE!</string>
+              <string/>
              </property>
              <property name="alignment">
               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -222,6 +305,14 @@
            </item>
            <item>
             <widget class="QLabel" name="speed">
+             <property name="styleSheet">
+              <string notr="true">#speed{
+background-color: transparent;
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+             </property>
              <property name="text">
               <string>Chargement des données</string>
              </property>
@@ -251,24 +342,60 @@
          </property>
          <item row="2" column="1">
           <widget class="QPushButton" name="Reculer">
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">#Reculer {
+background-color: transparent;
+border-image: url(:Reculer.png);
+
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+           </property>
            <property name="text">
-            <string>Reculer</string>
+            <string/>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
           <widget class="QPushButton" name="Avancer">
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">#Avancer {
+background-color: transparent;
+border-image: url(:Avancer.png);
+
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+           </property>
            <property name="text">
-            <string>Avancer</string>
+            <string/>
            </property>
           </widget>
          </item>
          <item row="1" column="2">
           <widget class="QPushButton" name="Droite">
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">#Droite {
 background-color: transparent;
-border-image: url(:Droite.jpg);
+border-image: url(:Droite.png);
+
 background: none;
 border: none;
 background-repeat: none;
@@ -281,8 +408,23 @@ background-repeat: none;
          </item>
          <item row="1" column="0">
           <widget class="QPushButton" name="Gauche">
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">#Gauche {
+background-color: transparent;
+border-image: url(:Gauche.png);
+
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+           </property>
            <property name="text">
-            <string>Gauche</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -296,8 +438,35 @@ background-repeat: none;
          <property name="rightMargin">
           <number>60</number>
          </property>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="styleSheet">
+            <string notr="true">#label_3{
+background-color: transparent;
+border-image: url(:Controle.png);
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
          <item row="2" column="0">
           <widget class="QSlider" name="setSpeed">
+           <property name="styleSheet">
+            <string notr="true">#setSpeed{
+background-color: transparent;
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+           </property>
            <property name="maximum">
             <number>255</number>
            </property>
@@ -311,18 +480,38 @@ background-repeat: none;
          </item>
          <item row="0" column="0">
           <widget class="QPushButton" name="Connexion">
-           <property name="text">
-            <string>Connexion</string>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>50</height>
+            </size>
            </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>Vitesse du copain</string>
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
            </property>
-           <property name="alignment">
-            <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+           <property name="styleSheet">
+            <string notr="true">#Connexion {
+background-color: transparent;
+border-image: url(:Connexion.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+#Connexion:pressed
+{
+   border-image: url(:Deconnexion.png);
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>16</width>
+             <height>16</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -335,29 +524,88 @@ background-repeat: none;
          </property>
          <item row="1" column="2">
           <widget class="QPushButton" name="Camera_Droite">
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">#Camera_Droite {
+background-color: transparent;
+border-image: url(:Droite.png);
+
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+           </property>
            <property name="text">
-            <string>Droite</string>
+            <string/>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
           <widget class="QPushButton" name="Camera_Haut">
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">#Camera_Haut {
+background-color: transparent;
+border-image: url(:Avancer.png);
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+           </property>
            <property name="text">
-            <string>Haut</string>
+            <string/>
            </property>
           </widget>
          </item>
          <item row="1" column="0">
           <widget class="QPushButton" name="Camera_Gauche">
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">#Camera_Gauche {
+background-color: transparent;
+border-image: url(:Gauche.png);
+
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+           </property>
            <property name="text">
-            <string>Gauche</string>
+            <string/>
            </property>
           </widget>
          </item>
          <item row="2" column="1">
           <widget class="QPushButton" name="Camera_Bas">
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">#Camera_Bas {
+background-color: transparent;
+border-image: url(:Reculer.png);
+
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+           </property>
            <property name="text">
-            <string>Bas</string>
+            <string/>
            </property>
           </widget>
          </item>

@@ -1,8 +1,18 @@
 <RCC>
     <qresource prefix="/">
-        <file>Fond2.jpg</file>
-        <file>Fond1.jpg</file>
-        <file>Fond3.png</file>
-        <file>Droite.jpg</file>
+        <file>FOND3.png</file>
+        <file>fond2.png</file>
+        <file>Dora.png</file>
+        <file>Avancer.png</file>
+        <file>Droite.png</file>
+        <file>Gauche.png</file>
+        <file>Reculer.png</file>
+        <file>Titre.png</file>
+        <file>Capteurs.png</file>
+        <file>Connexion.png</file>
+        <file>Deconnexion.png</file>
+        <file>Vitesse.png</file>
+        <file>Energie.png</file>
+        <file>Controle.png</file>
     </qresource>
 </RCC>
