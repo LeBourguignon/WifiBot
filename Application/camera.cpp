@@ -6,7 +6,7 @@ Camera::Camera(QMainWindow *_mainWindow)
     //Association du widget à l'objet caméra + chargement de la page web de la caméra
     view = mainWindow->findChild<QWebEngineView*>("Camera");
     view->load(QUrl("http://192.168.1.106:8080/?action=stream"));
-    view->setZoomFactor(1.5);
+    view->setZoomFactor(2);
     view->show();
 }
 

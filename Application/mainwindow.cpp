@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QGamepadManager>
-
+#include <QThread>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -215,6 +215,21 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
             case Qt::Key_K:
             controlMoveCamera(ControllerType::INTERFACE, Direction::BACKWARD);
             break;
+
+            case Qt::Key_P:
+            controlMoveRobot(ControllerType::INTERFACE, Direction::FORWARD);
+            QThread::sleep(2);
+            controlMoveRobot(ControllerType::INTERFACE, Direction::RIGHT);
+            QThread::sleep(2);
+            controlMoveRobot(ControllerType::INTERFACE, Direction::FORWARD);
+            QThread::sleep(2);
+            controlMoveRobot(ControllerType::INTERFACE, Direction::RIGHT);
+            QThread::sleep(2);
+            controlMoveRobot(ControllerType::INTERFACE, Direction::FORWARD);
+            QThread::sleep(2);
+            controlMoveRobot(ControllerType::INTERFACE, Direction::RIGHT);
+            QThread::sleep(2);
+            controlMoveRobot(ControllerType::INTERFACE, Direction::FORWARD);
 
      }
 
