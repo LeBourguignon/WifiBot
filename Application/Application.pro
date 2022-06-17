@@ -1,6 +1,7 @@
 QT       += core gui
 QT       += network
 QT       += webenginewidgets
+QT       += gamepad
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     camera.h \
+    controllerType.h \
     direction.h \
     mainwindow.h \
     myrobot.h
@@ -30,3 +32,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    image.qrc

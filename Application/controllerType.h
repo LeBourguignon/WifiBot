@@ -1,0 +1,11 @@
+#ifndef CONTROLLERTYPE_H
+#define CONTROLLERTYPE_H
+
+enum class ControllerType {
+    INTERFACE,
+    MANNETTE_AXIS,
+    MANNETTE_R2,
+    MANNETTE_BUTTON
+};
+
+#endif // CONTROLLERTYPE_H
