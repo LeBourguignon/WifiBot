@@ -127,6 +127,7 @@ void MyRobot::move(Direction direction, quint8 velocity)
     Mutex.unlock();
 }
 
+// Calcul du CRC
 quint16 MyRobot::crc16(QByteArray adresseTab, unsigned int tailleMax) {
     quint16 crc = 0xFFFF;
     quint16 polynome = 0xA001;
