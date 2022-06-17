@@ -17,286 +17,13 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="gridLayoutWidget_3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>370</y>
-      <width>871</width>
-      <height>161</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_4">
-     <item row="1" column="2">
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="1" column="0">
-        <widget class="QPushButton" name="Camera_Gauche">
-         <property name="font">
-          <font>
-           <family>Courier New</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Gauche</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QPushButton" name="Camera_Bas">
-         <property name="font">
-          <font>
-           <family>Courier New</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Bas</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="Camera_Haut">
-         <property name="font">
-          <font>
-           <family>Courier New</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>Haut</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QPushButton" name="Camera_Droite">
-         <property name="font">
-          <font>
-           <family>Courier New</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Droite</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="Connexion">
-       <property name="font">
-        <font>
-         <family>Courier New</family>
-         <pointsize>12</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">#Connexion {
-background-color: transparent;
-border-image: url(:Start.png);
-background: none;
-border: none;
-background-repeat: none;
-}
-#Connexion:pressed
-{
-   border-image: url(:Stop.png);
-}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <spacer name="verticalSpacer_10">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="1" column="0">
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="2" column="2">
-        <widget class="QPushButton" name="Droite">
-         <property name="font">
-          <font>
-           <family>Courier New</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">#Droite {
-background-color: transparent;
-border-image: url(:Droite.png);
-background: none;
-border: none;
-background-repeat: none;
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QPushButton" name="Gauche">
-         <property name="font">
-          <font>
-           <family>Courier New</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">#Gauche {
-background-color: transparent;
-border-image: url(:Gauche.png);
-background: none;
-border: none;
-background-repeat: none;
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="Avancer">
-         <property name="font">
-          <font>
-           <family>Courier New</family>
-           <pointsize>12</pointsize>
-           <italic>false</italic>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">#Avancer {
-background-color: transparent;
-border-image: url(:Avancer.png);
-background: none;
-border: none;
-background-repeat: none;
-}
-</string>
-         </property>
-         <property name="text">
-          <string> </string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="4" column="1">
-        <widget class="QPushButton" name="Reculer">
-         <property name="font">
-          <font>
-           <family>Courier New</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">#Reculer {
-background-color: transparent;
-border-image: url(:Reculer.png);
-background: none;
-border: none;
-background-repeat: none;
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <spacer name="verticalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="gridLayoutWidget_4">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>9</y>
-      <width>871</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_5">
-     <item row="0" column="1">
-      <widget class="QLabel" name="label">
-       <property name="font">
-        <font>
-         <family>Geeza Pro</family>
-         <pointsize>23</pointsize>
-         <bold>true</bold>
-         <strikeout>false</strikeout>
-         <kerning>true</kerning>
-        </font>
-       </property>
-       <property name="text">
-        <string>                       CONTROLE TON COPAIN!</string>
-       </property>
-       <property name="textFormat">
-        <enum>Qt::MarkdownText</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="gridLayoutWidget_5">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>109</y>
-      <width>681</width>
-      <height>261</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_3"/>
-   </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>689</x>
-      <y>109</y>
-      <width>205</width>
-      <height>91</height>
+      <x>63</x>
+      <y>-30</y>
+      <width>1121</width>
+      <height>741</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -345,6 +72,13 @@ background-repeat: none;
            <width>720</width>
            <height>480</height>
           </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QProgressBar" name="sensorBR">
+         <property name="value">
+          <number>0</number>
          </property>
         </widget>
        </item>
@@ -470,13 +204,6 @@ background-repeat: none;
                </property>
               </widget>
              </item>
-             <item row="3" column="1">
-              <widget class="QProgressBar" name="sensorBR">
-               <property name="value">
-                <number>0</number>
-               </property>
-              </widget>
-             </item>
             </layout>
            </item>
           </layout>
@@ -522,13 +249,6 @@ background-repeat: none;
          <property name="spacing">
           <number>5</number>
          </property>
-         <item row="1" column="0">
-          <widget class="QPushButton" name="Gauche">
-           <property name="text">
-            <string>Gauche</string>
-           </property>
-          </widget>
-         </item>
          <item row="2" column="1">
           <widget class="QPushButton" name="Reculer">
            <property name="text">
@@ -536,17 +256,33 @@ background-repeat: none;
            </property>
           </widget>
          </item>
-         <item row="1" column="2">
-          <widget class="QPushButton" name="Droite">
-           <property name="text">
-            <string>Droite</string>
-           </property>
-          </widget>
-         </item>
          <item row="0" column="1">
           <widget class="QPushButton" name="Avancer">
            <property name="text">
             <string>Avancer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="Droite">
+           <property name="styleSheet">
+            <string notr="true">#Droite {
+background-color: transparent;
+border-image: url(:Droite.jpg);
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="Gauche">
+           <property name="text">
+            <string>Gauche</string>
            </property>
           </widget>
          </item>
@@ -637,7 +373,7 @@ background-repeat: none;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>915</width>
+     <width>1280</width>
      <height>22</height>
     </rect>
    </property>

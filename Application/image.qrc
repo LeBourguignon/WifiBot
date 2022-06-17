@@ -1,13 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>Droite.png</file>
-        <file>Start.png</file>
-        <file>Stop.png</file>
-        <file>BFull.png</file>
-        <file>CFull.png</file>
-        <file>Avancer.png</file>
-        <file>Gauche.png</file>
-        <file>Reculer.png</file>
-        <file>../../../../Downloads/Fond.jpg</file>
+        <file>Fond2.jpg</file>
+        <file>Fond1.jpg</file>
+        <file>Fond3.png</file>
+        <file>Droite.jpg</file>
     </qresource>
 </RCC>
