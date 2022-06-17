@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QGamepadManager>
+#include <QThread>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -151,6 +152,7 @@ void MainWindow::updateCaptor(QByteArray data) {
     }*/
 }
 
+// Connexion au robot lorsque l'évènement du bouton est declanché
 void MainWindow::on_Connexion_clicked()
 {
     if (myRobot.isConnect()) {
@@ -166,7 +168,7 @@ void MainWindow::on_Connexion_clicked()
         ui->Connexion->setText("Déconnecté");
 }
 
-
+// Pilotage du robot sur l'interface
 void MainWindow::on_Avancer_pressed()
 {
     controlMoveRobot(ControllerType::INTERFACE, Direction::FORWARD, ui->setSpeed->value());
@@ -210,6 +212,7 @@ void MainWindow::on_Reculer_released()
     controlMoveRobot(ControllerType::INTERFACE);
 }
 
+// Pilotage du robot et de la caméra avec les touches du clavier
 void MainWindow::keyPressEvent(QKeyEvent *event){
     int touche = event->key();
     switch(touche){
@@ -246,9 +249,25 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
             controlMoveCamera(ControllerType::INTERFACE, Direction::BACKWARD);
             break;
 
+            case Qt::Key_P:
+            controlMoveRobot(ControllerType::INTERFACE, Direction::FORWARD);
+            QThread::sleep(2);
+            controlMoveRobot(ControllerType::INTERFACE, Direction::RIGHT);
+            QThread::sleep(2);
+            controlMoveRobot(ControllerType::INTERFACE, Direction::FORWARD);
+            QThread::sleep(2);
+            controlMoveRobot(ControllerType::INTERFACE, Direction::RIGHT);
+            QThread::sleep(2);
+            controlMoveRobot(ControllerType::INTERFACE, Direction::FORWARD);
+            QThread::sleep(2);
+            controlMoveRobot(ControllerType::INTERFACE, Direction::RIGHT);
+            QThread::sleep(2);
+            controlMoveRobot(ControllerType::INTERFACE, Direction::FORWARD);
+
      }
 
 }
+
 
 void MainWindow::keyReleaseEvent(QKeyEvent *event){
     int touche = event->key();
@@ -262,7 +281,7 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event){
      }
 }
 
-
+// Déplacement de la caméra à l'aide de l'interface
 void MainWindow::on_Camera_Haut_clicked()
 {
     controlMoveCamera(ControllerType::INTERFACE, Direction::FORWARD);
@@ -284,6 +303,7 @@ void MainWindow::on_Camera_Bas_clicked()
     controlMoveCamera(ControllerType::INTERFACE, Direction::BACKWARD);
 }
 
+// Pilotage du robot avec les touches de la manette
 void MainWindow::GamepadPressButton(){
     connect(QGamepadManager::instance(), &QGamepadManager::gamepadButtonPressEvent, this,
             [this](int deviceId, QGamepadManager::GamepadButton button, double value){
@@ -356,6 +376,7 @@ void MainWindow::GamepadReleaseButton(){
     });
 }
 
+// Récupération des valeurs des joysticks
 void MainWindow::GamepadAxis(){
     connect(QGamepadManager::instance(), &QGamepadManager::gamepadAxisEvent, this,
             [this](int deviceId, QGamepadManager::GamepadAxis button, double value){

@@ -3,13 +3,16 @@
 Camera::Camera(QMainWindow *_mainWindow)
     : mainWindow(_mainWindow)
 {
+    //Association du widget à l'objet caméra + chargement de la page web de la caméra
     view = mainWindow->findChild<QWebEngineView*>("Camera");
     view->load(QUrl("http://192.168.1.106:8080/?action=stream"));
+    view->setZoomFactor(2);
     view->show();
 }
 
 void Camera::move(Direction direction, bool slow){
     QNetworkAccessManager *manager = new QNetworkAccessManager();
+    //Déplacement de la caméra à l'aide de rêquete envoyé
     switch(direction){
     case Direction::FORWARD: //haut
         if (!slow)
