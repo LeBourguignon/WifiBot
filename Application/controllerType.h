@@ -3,7 +3,9 @@
 
 enum class ControllerType {
     INTERFACE,
-    MANNETTE
+    MANNETTE_AXIS,
+    MANNETTE_R2,
+    MANNETTE_BUTTON
 };
 
 #endif // CONTROLLERTYPE_H

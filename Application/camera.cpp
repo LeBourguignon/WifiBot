@@ -8,21 +8,25 @@ Camera::Camera(QMainWindow *_mainWindow)
     view->show();
 }
 
-void Camera::move(int a){
+void Camera::move(Direction direction){
     QNetworkAccessManager *manager = new QNetworkAccessManager();
-    switch(a){
-    case 0: //haut
+    switch(direction){
+    case Direction::FORWARD: //haut
         manager->get(QNetworkRequest(QUrl("http://192.168.1.106:8080/?action=command&dest=0&plugin=0&id=10094853&group=1&value=-200")));
         break;
-    case 1: //gauche
+
+    case Direction::LEFT: //gauche
         manager->get(QNetworkRequest(QUrl("http://192.168.1.106:8080/?action=command&dest=0&plugin=0&id=10094852&group=1&value=200")));
         break;
-    case 2: //bas
+
+    case Direction::RIGHT: //droite
         manager->get(QNetworkRequest(QUrl("http://192.168.1.106:8080/?action=command&dest=0&plugin=0&id=10094852&group=1&value=-200")));
         break;
-    case 3: //droite
+
+    case Direction::BACKWARD: //bas
         manager->get(QNetworkRequest(QUrl("http://192.168.1.106:8080/?action=command&dest=0&plugin=0&id=10094853&group=1&value=200")));
         break;
+
     default:
         break;
     }
