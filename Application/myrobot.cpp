@@ -107,10 +107,11 @@ void MyRobot::move(Direction direction, quint8 velocity)
         break;
     case Direction::BACKWARD_LEFT:
         this->DataToSend[6] = 0b00000000;
-        this->DataToSend[2] = 0;
+        this->DataToSend[4] = 0;
         break;
     case Direction::BACKWARD_RIGHT:
         this->DataToSend[6] = 0b00000000;
+        this->DataToSend[2] = 0;
         break;
     default:
         this->DataToSend[2] = 0;

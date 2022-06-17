@@ -85,11 +85,11 @@ void MainWindow::updateSpeed(QByteArray data) {
 }
 
 void MainWindow::updateCaptor(QByteArray data) {
-    unsigned char irRF = (unsigned char)data[3];
-    //unsigned char irRB = (unsigned char)data[4];
+    unsigned char irLF = (unsigned char)data[3];
+    unsigned char irLB = (unsigned char)data[4];
 
-    unsigned char irLF = (unsigned char)data[11];
-    unsigned char irLB = (unsigned char)data[12];
+    unsigned char irRF = (unsigned char)data[11];
+    unsigned char irRB = (unsigned char)data[12];
 
     //qDebug() << "Captor: " << irLF << "; " << irRF << "; " << irLB << "; " << irRB;
 
@@ -114,14 +114,12 @@ void MainWindow::updateCaptor(QByteArray data) {
         ui->sensorBL->setValue(irLB * 100 / 180);
     }
 
-    /* Capteur de marche pas
-    if (irLB >= 180) {
-
+    if (irRB >= 180) {
+        ui->sensorBR->setValue(100);
     }
     else {
-
+        ui->sensorBR->setValue(irRB * 100 / 180);
     }
-    */
 }
 
 void MainWindow::on_Connexion_clicked()
@@ -132,6 +130,11 @@ void MainWindow::on_Connexion_clicked()
     else {
         myRobot.doConnect();
     }
+
+    if (myRobot.isConnect())
+        ui->Connexion->setText("Connecté");
+    else
+        ui->Connexion->setText("Déconnecté");
 }
 
 
@@ -311,6 +314,11 @@ void MainWindow::GamepadReleaseButton(){
             controlMoveRobot(ControllerType::MANNETTE_BUTTON);
             break;
 
+            case QGamepadManager::GamepadButton::ButtonR2:
+            r2Press = 0;
+            controlMoveRobot(ControllerType::MANNETTE_R2);
+            break;
+
             default:
             break;
 
@@ -355,27 +363,31 @@ Direction MainWindow::toDirectionRobot(double x, double y) {
     if((x*x)+(y*y) <= (0.1*0.1))
         return Direction::NONE;
     else if ((-2*x)<=y && (2*x)<=y)
-        return Direction::FORWARD;
+        return Direction::BACKWARD;
     else if ((2*x)>=y && (0.5*x)<=y)
-        return Direction::FORWARD_RIGHT;
+        return Direction::BACKWARD_RIGHT;
     else if ((0.5*x)>=y && (-0.5*x)<=y)
         return Direction::RIGHT;
     else if ((-0.5*x)>=y && (-2*x)<=y)
-        return Direction::BACKWARD_RIGHT;
+        return Direction::FORWARD_RIGHT;
     else if ((-2*x)>=y && (2*x)>=y)
-        return Direction::BACKWARD;
+        return Direction::FORWARD;
     else if ((2*x)<=y && (0.5*x)>=y)
-        return Direction::BACKWARD_LEFT;
+        return Direction::FORWARD_LEFT;
     else if ((0.5*x)<=y && (-0.5*x)>=y)
         return Direction::LEFT;
     else if ((-0.5*x)<=y && (-2*x)>=y)
-        return Direction::FORWARD_LEFT;
+        return Direction::BACKWARD_LEFT;
     else return Direction::NONE;
 }
 
 void MainWindow::controlMoveRobot(ControllerType type, Direction direction, int speed) {
     Direction mannetteDirection = toDirectionRobot(axisLeftX, axisLeftY);
-    if ((type == ControllerType::INTERFACE || type == ControllerType::MANNETTE_BUTTON) && mannetteDirection == Direction::NONE)
+    if ((direction == Direction::FORWARD_LEFT || direction == Direction::FORWARD || direction == Direction::FORWARD_RIGHT || mannetteDirection == Direction::FORWARD_LEFT || mannetteDirection == Direction::FORWARD || mannetteDirection == Direction::FORWARD_RIGHT) && (ui->sensorFL->value() == 100 || ui->sensorFR->value() == 100))
+        myRobot.move();
+    else if((direction == Direction::BACKWARD_LEFT || direction == Direction::BACKWARD || direction == Direction::BACKWARD_RIGHT || mannetteDirection == Direction::FORWARD_LEFT || mannetteDirection == Direction::BACKWARD || mannetteDirection == Direction::BACKWARD_RIGHT) && (ui->sensorBL->value() == 100 || ui->sensorBR->value() == 100))
+        myRobot.move();
+    else if ((type == ControllerType::INTERFACE || type == ControllerType::MANNETTE_BUTTON) && mannetteDirection == Direction::NONE)
         myRobot.move(direction, speed);
     else if (type == ControllerType::MANNETTE_AXIS) {
         if (allAxisLeft)
@@ -390,11 +402,11 @@ Direction MainWindow::toDirectionCamera(double x, double y) {
     if((x*x)+(y*y) <= (0.1*0.1))
         return Direction::NONE;
     else if ((-x)<=y && (x)<=y)
-        return Direction::FORWARD;
+        return Direction::BACKWARD;
     else if ((-x)<=y && (x)>=y)
         return Direction::RIGHT;
     else if ((-x)>=y && (x)>=y)
-        return Direction::BACKWARD;
+        return Direction::FORWARD;
     else if ((-x)>=y && (x)<=y)
         return Direction::LEFT;
     else return Direction::NONE;
